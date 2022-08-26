@@ -1,0 +1,25 @@
+{
+  "name": "elbrus_thanks",
+  "version": "1.0.0",
+  "description": "This is an application for 'thanks' on the everyday Elbrus BootCamp Standup",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elijahpavlov/Elbrus_thanks.git"
+  },
+  "keywords": [
+    "Thanks",
+    "Elbrus",
+    "BootCamp",
+    "Leyla"
+  ],
+  "author": "Sergey Morozov, Elijah Pavlov, Tamara Gasparyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elijahpavlov/Elbrus_thanks/issues"
+  },
+  "homepage": "https://github.com/elijahpavlov/Elbrus_thanks#readme"
+}
