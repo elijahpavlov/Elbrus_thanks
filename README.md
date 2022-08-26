@@ -10,4 +10,4 @@ Elijah Pavlov - ''
 Tamara Gasparyan - ''
 
 
-Stack: ''
+Stack: 'React'
