@@ -5,8 +5,6 @@ const { sequelize } = require('./db/models');
 const config = require('./config/config');
 
 const pageNotFound = require('./middleware/pageNotFound');
-const indexRouter = require('./routes/view/indexRouter');
-const authRouter = require('./routes/view/authRouter');
 const authRouterApi = require('./routes/api/authRouteApi');
 
 const app = express();
@@ -14,8 +12,6 @@ config(app);
 
 const PORT = process.env.PORT ?? 3000;
 
-app.use('/', indexRouter);
-app.use('/auth', authRouter);
 app.use('/api', authRouterApi);
 
 app.use(pageNotFound);

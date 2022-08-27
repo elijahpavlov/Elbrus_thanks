@@ -1,7 +1,9 @@
-const authRouterApi = require('express').Router(0);
+const authRouterApi = require('express').Router();
 const bcrypt = require('bcrypt');
 
 const { User } = require('../../db/models');
+
+// Роутер "ЛОГИ" по ресту
 
 authRouterApi.post('/auth/login', async (req, res) => {
   if (req.body.login.length > 4 && req.body.password.length > 7) {
@@ -10,7 +12,7 @@ authRouterApi.post('/auth/login', async (req, res) => {
       user = await User.findOne({ where: { login: req.body.login } });
 
       if (!user) {
-        res.json({ message: 'Нет пользователя с таким login и/или паролем.' });
+        res.json({ message: 'Нет пользователя с таким логин и/или паролем.' });
         return;
       }
     } catch ({ message }) {
@@ -22,7 +24,7 @@ authRouterApi.post('/auth/login', async (req, res) => {
       const compPass = await bcrypt.compare(req.body.password, user.password);
 
       if (!compPass) {
-        res.json({ message: 'Не верный login и/или пароль.' });
+        res.json({ message: 'Не верный логин и/или пароль.' });
         return;
       }
     } catch ({ message }) {
@@ -36,9 +38,11 @@ authRouterApi.post('/auth/login', async (req, res) => {
     };
     res.json({ message: 'success' });
   } else {
-    res.json({ message: 'Слишком короткий login и/или пароль.' });
+    res.json({ message: 'Слишком короткий логин и/или пароль.' });
   }
 });
+
+// Роутер "ЛОГАУТА" с удалением сессии
 
 authRouterApi.get('/auth/logout', (req, res) => {
   req.session.destroy((error) => {
