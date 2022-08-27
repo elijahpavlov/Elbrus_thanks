@@ -42,6 +42,9 @@ function List () {
 
 
   return (
+    <div className="App">
+    <header className="App-header">
+      <h1>Elbrus Thanks</h1>
     <div>
       <form name="searchForm">
         <input 
@@ -64,6 +67,8 @@ function List () {
             <button onClick={handleClickPhase2} id="phase2">2</button>
             <button onClick={handleClickPhase3} id="phase3">3</button>
       </div>
+    </div>
+    </header>
     </div>
     );
 }
