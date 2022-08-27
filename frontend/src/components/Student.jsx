@@ -2,15 +2,26 @@ import React from "react";
 import { useState } from "react";
 
 function Student ({student}) {
-    const [thanks, setThanks] = useState(0)
+    
+  const [thanks, setThanks] = useState(0)
 
-  function plus() {
-    setThanks(thanks + 1);
+  async function plus(event) {
+    event.preventDefault();
+    setThanks((prev) => prev + 1);
+
+    const result = await fetch('/list', {
+      method: 'PUT',
+      body: JSON.stringify({ thanks }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    const data = await result.json();
   }
 
-  function minus() {
-    setThanks(thanks > 0 ? thanks - 1 : thanks);
-  }
+  // function minus() {
+  //   setThanks(thanks > 0 ? thanks - 1 : thanks);
+  // }
 
 
     return (
@@ -21,13 +32,6 @@ function Student ({student}) {
                 <div>{thanks}</div>
                 </button>
             </div>
-            <div>
-                {/* <button className="plusButton" onClick={plus}>+</button>
-                <button className="minusButton" onClick={minus}>-</button> */}
-            </div>
-            {/* <div>
-                {thanks}
-            </div>  */}
         </div>
     )
 }

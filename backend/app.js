@@ -1,5 +1,5 @@
 require('@babel/register');
-require('dotenv'),config();
+require('dotenv').config();
 
 const express = require('express');
 const { sequelize } = require('./db/models');
