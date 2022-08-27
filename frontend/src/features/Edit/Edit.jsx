@@ -27,7 +27,9 @@ function Edit() {
 
   return (
     <div>
-
+    <div className="App">
+    <header className="App-header">
+      <h1>Elbrus Thanks</h1>
       <form name="searchForm">
         <input 
         type="text" 
@@ -43,11 +45,9 @@ function Edit() {
               <StudentEdit student={student}/>
           )}
       </ul>
-      
-      <div>
-        <Navigation/>
-      </div>
 
+    </header>
+    </div>
     </div>
     );
 }
