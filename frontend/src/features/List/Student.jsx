@@ -2,21 +2,20 @@ import React from "react";
 import { useState } from "react";
 
 function Student ({student}) {
-    
-  const [thanks, setThanks] = useState(0)
+  const [thanks, setThanks] = useState(student)
 
-  async function plus(event) {
-    event.preventDefault();
-    setThanks((prev) => prev + 1);
-
-    const result = await fetch('/list', {
-      method: 'PUT',
-      body: JSON.stringify({ thanks }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+function plus(event, id, studentThanks) {
+    setThanks(async (prev) => {
+      const response = await fetch(`/list/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({ thanks: studentThanks }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      const result = await response.json();
+      setThanks(result);
     })
-    const data = await result.json();
   }
 
   // function minus() {
@@ -27,9 +26,9 @@ function Student ({student}) {
     return (
         <div style={{ display: 'flex', flexDirection: 'row' }}>
             <div>
-                <button onClick={plus} style={{listStyle: 'none', border: '1px solid black', margin: '5px', width: '500px', height: '50px' }} key={student.id}>
+                <button onClick={(event) => plus(event, student.id, student.thanks)} style={{listStyle: 'none', border: '1px solid black', margin: '5px', width: '500px', height: '50px' }} key={student.id}>
                 {student.name}  
-                <div>{thanks}</div>
+                <div>{thanks.thanks}</div>
                 </button>
             </div>
         </div>

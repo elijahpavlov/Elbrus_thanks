@@ -43,6 +43,7 @@ function List () {
 
   return (
     <div>
+      <h1>Elbrus Thanks</h1>
       <form name="searchForm">
         <input 
         type="text" 
