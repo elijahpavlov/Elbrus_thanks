@@ -4,16 +4,14 @@ const express = require('express');
 const { sequelize } = require('./db/models');
 const config = require('./config/config');
 
-const indexRouter = require('./routes/indexRouter');
-const authRouter = require('./routes/authRouter');
+const PhaseShiftRouter = require('./routes/phaseShiftRouter');
 
 const app = express();
 config(app);
 
-const PORT = process.env.PORT ?? 3000;
+const PORT = process.env.PORT ?? 4000;
 
-app.use('/', indexRouter);
-app.use('/auth', authRouter);
+app.use('/', PhaseShiftRouter);
 
 app.listen(PORT, async () => {
   try {

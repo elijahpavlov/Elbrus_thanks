@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "capelin",
-    "password": "capelin",
+    "username": "postgres",
+    "password": "25091993Number",
     "database": "skeleton_1",
     "host": "127.0.0.1",
     "dialect": "postgres"
