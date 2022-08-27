@@ -9,9 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
-      // define association here
-    }
+
   }
   const attributes = {
     id: {
@@ -20,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER,
     },
-    email: {
+    login: {
       allowNull: false,
       unique: true,
       type: DataTypes.TEXT,

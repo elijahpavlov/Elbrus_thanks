@@ -6,7 +6,7 @@ module.exports = {
     const hash = await bcrypt.hash(testPass, 10);
 
     const testUser = {
-      email: 'elijah@elijah',
+      login: 'Leyla',
       password: hash,
       createdAt: new Date(),
       updatedAt: new Date(),

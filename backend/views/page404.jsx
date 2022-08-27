@@ -1,13 +1,11 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-function Main({ user }) {
+function page404({ user }) {
   return (
     <Layout user={user}>
-      <div>
-        
-      </div>
+      <h1>Page_not_found</h1>
     </Layout>
   );
 }
-module.exports = Main;
+module.exports = page404;

@@ -1,19 +1,9 @@
-const authRouter = require('express').Router();
+const authRouterApi = require('express').Router(0);
 const bcrypt = require('bcrypt');
-const LoginForm = require('../views/LoginForm');
 
-const { User } = require('../db/models');
-const RegForm = require('../views/RegForm');
+const { User } = require('../../db/models');
 
-authRouter.get('/', (req, res) => {
-  res.redirect(('/'));
-});
-
-authRouter.get('/login', (req, res) => {
-  res.renderComponent(LoginForm);
-});
-
-authRouter.post('/login', async (req, res) => {
+authRouterApi.post('/auth/login', async (req, res) => {
   if (req.body.login.length > 4 && req.body.password.length > 7) {
     let user;
     try {
@@ -44,13 +34,13 @@ authRouter.post('/login', async (req, res) => {
       id: user.id,
       login: user.login,
     };
-    res.json({ message: 'sucess' });
+    res.json({ message: 'success' });
   } else {
     res.json({ message: 'Слишком короткий login и/или пароль.' });
   }
 });
 
-authRouter.get('/logout', (req, res) => {
+authRouterApi.get('/auth/logout', (req, res) => {
   req.session.destroy((error) => {
     if (error) {
       res.json({ error: 'Не удалось выйти' });
@@ -62,8 +52,4 @@ authRouter.get('/logout', (req, res) => {
   });
 });
 
-authRouter.get('/reg', (req, res) => {
-  res.renderComponent(RegForm);
-});
-
-module.exports = authRouter;
+module.exports = authRouterApi;
