@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import StudentEdit from "./StudentEdit.jsx";
-import Navigation from "./Navigation.jsx";
 
 function Edit() {
   const studentsArr = [
