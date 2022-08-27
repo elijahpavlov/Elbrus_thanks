@@ -1,9 +1,9 @@
 {
   "development": {
 
-    "username": "postgres",
-    "password": "25091993Number",
-    "database": "skeleton_1",
+    "username": "tamara",
+    "password": "132457680gt",
+    "database": "elbrus_thanks",
 
     "host": "127.0.0.1",
     "dialect": "postgres"
