@@ -1,8 +1,10 @@
 {
   "development": {
+
     "username": "tamara",
     "password": "132457680gt",
     "database": "elbrus_thanks",
+
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
