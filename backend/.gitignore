@@ -1,2 +1,11 @@
+# Dependencies
 node_modules
+
+#User-generated files
 sessions/
+
+#Secrets
+.env
+
+#Misc.
+.DS-Store
