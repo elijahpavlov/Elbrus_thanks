@@ -29,7 +29,7 @@ function Navbar({ user }) {
             <a className="navbar-brand" href="/">
               acc:
               {' '}
-              {user.email}
+              {user.login}
             </a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon" />
@@ -40,7 +40,7 @@ function Navbar({ user }) {
                   <a className="nav-link active" aria-current="page" href="/auth/lk">LK</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/auth/logout">Logout</a>
+                  <a className="nav-link" href="/api/auth/logout">Logout</a>
                 </li>
 
               </ul>

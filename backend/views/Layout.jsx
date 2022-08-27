@@ -11,7 +11,8 @@ function Layout({ children, user }) {
         <link rel="stylesheet" href="/css/bootstrap.min.css" />
         <script defer src="/js/bootstrap.bundle.min.js" />
         <script defer src="/js/auth.js" />
-        <title>skeleton</title>
+
+        <title>Elbrus_thabks</title>
       </head>
       <body>
         <Navbar user={user} />

@@ -2,7 +2,7 @@
   "development": {
     "username": "capelin",
     "password": "capelin",
-    "database": "skeleton_1",
+    "database": "elbrus_thanks",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
