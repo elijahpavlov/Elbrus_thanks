@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import Student from "./Student.jsx";
+import StudentEdit from "./StudentEdit.jsx";
 import Navigation from "./Navigation.jsx";
 
-function Main() {
+function Edit() {
   const studentsArr = [
     { id: 1, name: 'Адам Махмутов', phase: 3, thanks: 0, status: true, createdAt: new Date(), updatedAt: new Date() },
     { id: 2, name: 'Вадим Акуленко', phase: 3, thanks: 0, status: true, createdAt: new Date(), updatedAt: new Date() },
@@ -41,7 +41,7 @@ function Main() {
 
       <ul>
           {filteredStudents.map((student) => 
-              <Student student={student}/>
+              <StudentEdit student={student}/>
           )}
       </ul>
       
@@ -53,4 +53,4 @@ function Main() {
     );
 }
 
-export default Main;
+export default Edit;
