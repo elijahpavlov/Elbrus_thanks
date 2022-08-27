@@ -1,6 +1,6 @@
 import './App.css';
 
-import List from './components/List.jsx'
+import List from './List/List.jsx'
 
 function App() {
   return (
