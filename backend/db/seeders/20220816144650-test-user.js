@@ -2,7 +2,8 @@ const bcrypt = require('bcrypt');
 
 module.exports = {
   async up(queryInterface) {
-    const testPass = process.env.TEST_USER_PASSWORD ?? '123456789'
+    const testPass = process.env.TEST_USER_PASSWORD ?? '123456789';
+
     const hash = await bcrypt.hash(testPass, 10);
 
     const testUser = {

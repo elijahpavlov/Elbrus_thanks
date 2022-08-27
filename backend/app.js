@@ -6,7 +6,7 @@ const { sequelize } = require('./db/models');
 const config = require('./config/config');
 
 
-const phaseShiftRouter = require('./routes/phaseShiftRouter');
+const phaseShiftRouter = require('./routes/api/phaseShiftRouter');
 const pageNotFound = require('./middleware/pageNotFound');
 const authRouterApi = require('./routes/api/authRouteApi');
 const listRouter = require('./routes/api/listRouteApi');
@@ -17,7 +17,7 @@ config(app);
 
 const PORT = process.env.PORT ?? 4000;
 
-app.use('/', phaseShiftRouter);
+app.use('/phaseshift', phaseShiftRouter);
 app.use('/api', authRouterApi);
 app.use('/list', listRouter);
 
