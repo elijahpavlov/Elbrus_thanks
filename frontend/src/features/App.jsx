@@ -11,6 +11,7 @@ function App() {
       <Route path="/list" element={<List />} />
       <Route path="/edit" element={<Edit />} />
     </Routes>
+
   );
 }
 

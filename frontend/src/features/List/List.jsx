@@ -46,6 +46,7 @@ function List () {
     <header className="App-header">
       <h1>Elbrus Thanks</h1>
     <div>
+      <h1>Elbrus Thanks</h1>
       <form name="searchForm">
         <input 
         type="text" 
