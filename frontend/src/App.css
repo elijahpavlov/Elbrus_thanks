@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+#phase1, #phase2, #phase3 {
+  width: 150px;
+  height: 130px; 
+  margin-bottom: 80px;
+  font-size: 50px;
+}
