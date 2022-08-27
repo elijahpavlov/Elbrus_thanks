@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 
 const sessionConfig = require('./sessionConfig');
 const ssr = require('../middleware/ssr');
@@ -14,4 +15,5 @@ module.exports = function config(app) {
   app.use(cookieParser());
   app.use(session(sessionConfig));
   app.use(ssr);
+  app.use(cors());
 };
