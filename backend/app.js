@@ -8,6 +8,7 @@ const pageNotFound = require('./middleware/pageNotFound');
 const indexRouter = require('./routes/view/indexRouter');
 const authRouter = require('./routes/view/authRouter');
 const authRouterApi = require('./routes/api/authRouteApi');
+const listRouter = require('./routes/api/listRouteApi');
 
 const app = express();
 config(app);
@@ -17,6 +18,7 @@ const PORT = process.env.PORT ?? 3000;
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/api', authRouterApi);
+app.use('/list', listRouter);
 
 app.use(pageNotFound);
 
