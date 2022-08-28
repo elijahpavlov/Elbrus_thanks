@@ -15,27 +15,17 @@ function StudentEdit({ student }) {
     }, []);
   }
 
-  return (
-    <div style={{ display: 'flex', flexDirection: 'row' }}>
-      <div>
-        <button
-          id={student.id}
-          onClick={povtor}
-          key={student.id}
-        >
-          {student.name}
-          <div>{thanks}</div>
-        </button>
-      </div>
-      <div>
-        {/* <button className="plusButton" onClick={plus}>+</button>
-                <button className="minusButton" onClick={minus}>-</button> */}
-      </div>
-      {/* <div>
-                {thanks}
-            </div>  */}
-    </div>
-  );
+
+    return (
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div>
+                <button id={student.id} onClick={povtor} style={{listStyle: 'none', border: '1px solid black', margin: '5px', width: '500px', height: '50px' }} key={student.id}>
+                {student.name}  
+                <div>{thanks}</div>
+                </button>
+            </div>
+        </div>
+    )
 }
 
 export default StudentEdit;
