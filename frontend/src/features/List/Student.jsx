@@ -1,39 +1,46 @@
-import React from "react";
-import { useState } from "react";
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/button-has-type */
+import React, { useState } from 'react';
 
-function Student ({student}) {
-  const [thanks, setThanks] = useState(student)
+function Student({ student }) {
+  const [thanks, setThanks] = useState(student.thanks);
 
-function plus(event, id, studentThanks) {
-    setThanks(async (prev) => {
-      const response = await fetch(`/list/${id}`, {
-        method: 'PUT',
-        body: JSON.stringify({ thanks: studentThanks }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-      const result = await response.json();
-      setThanks(result);
-    })
-  }
+  const plus = async () => {
+    const response = await fetch(`/list/${student.id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ thanks, status: 'plus' }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const result = await response.json();
+    setThanks(result.thanks);
+  };
 
-  // function minus() {
-  //   setThanks(thanks > 0 ? thanks - 1 : thanks);
-  // }
+  const minus = async () => {
+    const response = await fetch(`/list/${student.id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ thanks, status: 'minus' }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const result = await response.json();
+    setThanks(result.thanks);
+  };
 
-
-    return (
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <div>
-                <button onClick={(event) => plus(event, student.id, student.thanks)} style={{listStyle: 'none', border: '1px solid black', margin: '5px', width: '500px', height: '50px' }} key={student.id}>
-                {student.name}  
-                <div>{thanks.thanks}</div>
-                </button>
-            </div>
-        </div>
-    )
+  return (
+    <div style={{ display: 'flex', flexDirection: 'row' }}>
+      <div className="buttonsDiv">
+        <button onClick={minus} className="minusButton">-</button>
+        <button onClick={plus} onTouchCancel className="studentInfoButton">
+          {student.name}
+          <div>{thanks}</div>
+        </button>
+      </div>
+    </div>
+  );
 }
-
 
 export default Student;
