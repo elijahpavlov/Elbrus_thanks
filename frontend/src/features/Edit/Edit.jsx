@@ -1,5 +1,8 @@
-import { useState, useEffect } from "react";
-import StudentEdit from "./StudentEdit.jsx";
+/* eslint-disable no-undef */
+/* eslint-disable max-len */
+/* eslint-disable react/button-has-type */
+import { React, useState, useEffect } from 'react';
+import StudentEdit from './StudentEdit';
 
 function Edit() {
   const [students, setStudents] = useState([]);
@@ -12,6 +15,7 @@ useEffect(() => {
       .then((result) => result.json())
       .then((data) => setStudents(data));
   }, [phase]);
+
 
   // Изменяет состояние фазы
   function nextPhase() {
@@ -26,6 +30,7 @@ useEffect(() => {
       method: 'PUT'
     });
     const result = await response.json();
+
     console.log('result', result);
     setStudents(result);
     setPhase(phase-1);
@@ -77,10 +82,10 @@ useEffect(() => {
         </>
       }
 
-    </header>
+        </header>
+      </div>
     </div>
-    </div>
-    );
+  );
 }
 
 export default Edit;

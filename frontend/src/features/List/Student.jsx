@@ -31,7 +31,7 @@ function Student({ student }) {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row' }}>
+    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', width: '100vh' }}>
       <div className="buttonsDiv">
         <button onClick={minus} className="minusButton">-</button>
         <button onClick={plus} onTouchCancel className="studentInfoButton">
