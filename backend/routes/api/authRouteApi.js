@@ -36,7 +36,8 @@ authRouterApi.post('/auth/login', async (req, res) => {
       id: user.id,
       login: user.login,
     };
-    res.json({ message: 'success' });
+
+    res.json({ message: 'success', user });
   } else {
     res.json({ message: 'Слишком короткий логин и/или пароль.' });
   }

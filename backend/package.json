@@ -2,7 +2,7 @@
   "name": "skeleton_1",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.jsx",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js --ext js,jsx,json --ignore sessions",
