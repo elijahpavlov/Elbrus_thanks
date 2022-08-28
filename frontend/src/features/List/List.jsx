@@ -2,6 +2,8 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useState, useEffect } from 'react';
 import Student from './Student';
+import Navbar from '../NavBar/NavBar';
+// import '../../../src/features/bootstrap.min.css'
 
 function List() {
   const [students, setStudents] = useState([]);
@@ -34,6 +36,7 @@ function List() {
     <div className="App">
       <header className="App-header">
         <div>
+          <Navbar />
           <form name="searchForm">
             <input
               type="text"
@@ -51,7 +54,7 @@ function List() {
           </div>
 
           <div className="phasesDiv">
-            <button onClick={phase1} id="phase1">1</button>
+            <button onClick={phase1} id="phase1" className="btn btn-danger">1</button>
             <button onClick={phase2} id="phase2">2</button>
             <button onClick={phase3} id="phase3">3</button>
           </div>
