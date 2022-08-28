@@ -2,49 +2,50 @@ import { useState, useEffect } from "react";
 import StudentEdit from "./StudentEdit.jsx";
 
 function Edit() {
-  const studentsArr = [
-    { id: 1, name: 'Адам Махмутов', phase: 3, thanks: 0, status: true, createdAt: new Date(), updatedAt: new Date() },
-    { id: 2, name: 'Вадим Акуленко', phase: 3, thanks: 0, status: true, createdAt: new Date(), updatedAt: new Date() },
-    { id: 3, name: 'Вадим Жданов', phase: 3, thanks: 0, status: true, createdAt: new Date(), updatedAt: new Date() },
-    { id: 4, name: 'Виктория Жугдурова', phase: 3, thanks: 0, status: true, createdAt: new Date(), updatedAt: new Date() },
-    { id: 5, name: 'Владимир Леонов', phase: 3, thanks: 0, status: true, createdAt: new Date(), updatedAt: new Date() },
-    { id: 6, name: 'Даниил Ледяев', phase: 3, thanks: 0, status: true, createdAt: new Date(), updatedAt: new Date() },
-    { id: 7, name: 'Денис Осотов', phase: 3, thanks: 0, status: true, createdAt: new Date(), updatedAt: new Date() },
-    { id: 8, name: 'Илья Павлов', phase: 3, thanks: 0, status: true, createdAt: new Date(), updatedAt: new Date() },
-    { id: 9, name: 'Кирилл Шендяпин', phase: 3, thanks: 0, status: true, createdAt: new Date(), updatedAt: new Date() },
-    { id: 10, name: 'Кристина Синоверская', phase: 3, thanks: 0, status: true, createdAt: new Date(), updatedAt: new Date() },
-    { id: 11, name: 'Оскар Шейхутдинов', phase: 3, thanks: 0, status: true, createdAt: new Date(), updatedAt: new Date() },
-    { id: 12, name: 'Сергей Морозов', phase: 3, thanks: 0, status: true, createdAt: new Date(), updatedAt: new Date() },
-    { id: 13, name: 'Тамара Гаспарян', phase: 3, thanks: 0, status: true, createdAt: new Date(), updatedAt: new Date() },
-  ];
+  const [students, setStudents] = useState([]);
+  const [phase, setPhase] = useState(3);
 
+  useEffect(() => {
+    fetch('/phaseshift')
+      .then((result) => result.json())
+      .then((data) => setStudents(data));
+  }, []);
 
-  const [value, setValue] = useState('')
+  // Фильтруем студентов согласно номеру фазы в состоянии phase
+  const filteredStudents = students.filter((student) => student.phase === phase);
+  console.log('filteredStudents', filteredStudents);
 
-  const filteredStudents = studentsArr.filter((student) => {
-    return student.name.toLowerCase().includes(value.toLowerCase())
-  })
+  // При нажатии кнопки переходим на младшую фазу
+  function nextPhase() {
+    if(phase > 1) {
+      setPhase(phase -1);
+    }
+  }
+  // Перевод студентов на следующие фазы 
+  async function shiftPhase() {
+    const response = await fetch('/phaseshift', {
+      method: 'PUT'
+    });
+    const result = await response.json();
+    console.log(result);
+    setThanks('result', result);
+  };
 
   return (
     <div>
     <div className="App">
     <header className="App-header">
-      <h1>Elbrus Thanks</h1>
-      <form name="searchForm">
-        <input 
-        type="text" 
-        name="searchInput" 
-        placeholder="Поиск..." 
-        style={{height: '30px', width: '400px'}}
-        onChange={(event) => setValue(event.target.value)}
-        />
-      </form>
-
+      <h1>{`Выберете повторщиков c фазы ${phase}`}</h1>
       <ul>
           {filteredStudents.map((student) => 
               <StudentEdit student={student}/>
           )}
       </ul>
+      {(phase > 1)?
+        <button onClick={nextPhase}>{`Перейти к фазе ${phase-1}`}</button>
+        :
+        <button onClick={shiftPhase}> Перевести студентов на фазы и добавить новых студентов</button>
+      }
 
     </header>
     </div>
