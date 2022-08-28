@@ -33,7 +33,6 @@ function List() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Elbrus Thanks</h1>
         <div>
           <form name="searchForm">
             <input
