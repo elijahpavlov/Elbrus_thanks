@@ -1,8 +1,9 @@
+/* eslint-disable react/react-in-jsx-scope */
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import Edit from './Edit/Edit.jsx';
-import List from './List/List.jsx';
-import Main from './Main/Main.jsx';
+import Edit from './Edit/Edit';
+import List from './List/List';
+import Main from './Main/Main';
 
 function App() {
   return (
