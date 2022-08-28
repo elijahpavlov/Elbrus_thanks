@@ -1,77 +1,65 @@
-import { useState, useEffect } from "react";
-import Student from "./Student.jsx";
+/* eslint-disable react/button-has-type */
+/* eslint-disable react/react-in-jsx-scope */
+import { useState, useEffect } from 'react';
+import Student from './Student';
 
-
-function List () {
-  const [page, setPage] = useState('phase 1');
-    const handleClickPhase1 = (event) => {
-        event.preventDefault();
-        setPage('phase1');
-    }
-    const handleClickPhase2 = (event) => {
-        event.preventDefault();
-        setPage('phase2');
-    }
-    const handleClickPhase3 = (event) => {
-        event.preventDefault();
-        setPage('phase3');
-    }
-
-  
-
-  const [students, setStudents] = useState([])
+function List() {
+  const [students, setStudents] = useState([]);
+  const [value, setValue] = useState('');
 
   useEffect(() => {
-    fetch ('/list')
+    fetch('/list')
       .then((result) => result.json())
-      .then((data) => {
-        setStudents(data);
-      });
-  }, [])
+      .then((data) => setStudents(data));
+  }, []);
 
+  function phase1() {
+    const filteredStudents = students.filter((student) => student.phase === 1);
+    setStudents(filteredStudents);
+  }
+  function phase2() {
+    const filteredStudents = students.filter((student) => student.phase === 2);
+    setStudents(filteredStudents);
+  }
+  function phase3() {
+    const filteredStudents = students.filter((student) => student.phase === 3);
+    setStudents(filteredStudents);
+  }
 
-  const [value, setValue] = useState('')
-
-  const filteredStudents = students.filter((student) => {
-    return student.name.toLowerCase().includes(value.toLowerCase())
-  })
-
-
-
-
-
+  const filteredStudents = students.filter((student) => student.name
+    .toLowerCase()
+    .includes(value.toLowerCase()));
 
   return (
     <div className="App">
-    <header className="App-header">
-      <h1>Elbrus Thanks</h1>
-    <div>
-      <h1>Elbrus Thanks</h1>
-      <form name="searchForm">
-        <input 
-        type="text" 
-        name="searchInput" 
-        placeholder="Поиск..." 
-        style={{height: '30px', width: '400px'}}
-        onChange={(event) => setValue(event.target.value)}
-        />
-      </form>
+      <header className="App-header">
+        <h1>Elbrus Thanks</h1>
+        <div>
+          <form name="searchForm">
+            <input
+              type="text"
+              name="searchInput"
+              placeholder="Поиск..."
+              style={{ height: '30px', width: '400px' }}
+              onChange={(event) => setValue(event.target.value)}
+            />
+          </form>
 
-      <ul>
-          {filteredStudents.map((student) => 
-              <Student student={student}/>
-          )}
-      </ul>
-      
-      <div className="phasesDiv" >
-            <button onClick={handleClickPhase1} id="phase1">1</button>
-            <button onClick={handleClickPhase2} id="phase2">2</button>
-            <button onClick={handleClickPhase3} id="phase3">3</button>
-      </div>
+          <div>
+            {filteredStudents.map((student) =>
+              <Student key={student.id} student={student} />
+            )}
+          </div>
+
+          <div className="phasesDiv">
+            <button onClick={phase1} id="phase1">1</button>
+            <button onClick={phase2} id="phase2">2</button>
+            <button onClick={phase3} id="phase3">3</button>
+          </div>
+        </div>
+      </header>
     </div>
-    </header>
-    </div>
-    );
+  );
 }
 
 export default List;
