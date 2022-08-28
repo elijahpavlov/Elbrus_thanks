@@ -26,13 +26,6 @@ function StudentEdit ({student}) {
                 <div>{thanks}</div>
                 </button>
             </div>
-            <div>
-                {/* <button className="plusButton" onClick={plus}>+</button>
-                <button className="minusButton" onClick={minus}>-</button> */}
-            </div>
-            {/* <div>
-                {thanks}
-            </div>  */}
         </div>
     )
 }
