@@ -3,16 +3,16 @@
 module.exports = {
   async up(queryInterface) {
     const studentsData = [
-      // { name: 'Иван Иванов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
-      // { name: 'Иван Иванов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
-      // { name: 'Иван Иванов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
-      // { name: 'Иван Иванов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
-      // { name: 'Иван Иванов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
-      // { name: 'Иван Иванов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
-      // { name: 'Иван Иванов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
-      // { name: 'Иван Иванов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
-      // { name: 'Иван Иванов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
-      // { name: 'Иван Иванов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
+      { name: 'Иван Иванов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
+      { name: 'Иван Иванов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
+      { name: 'Иван Иванов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
+      { name: 'Иван Иванов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
+      { name: 'Иван Иванов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
+      { name: 'Иван Иванов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
+      { name: 'Иван Иванов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
+      { name: 'Иван Иванов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
+      { name: 'Иван Иванов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
+      { name: 'Иван Иванов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
 
 
       { name: 'Анатолий Кротов', phase: 2, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
