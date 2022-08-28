@@ -1,22 +1,20 @@
-import React from "react";
-import { useState, useEffect } from "react";
+/* eslint-disable react/button-has-type */
+/* eslint-disable react/prop-types */
+import React, { useState } from 'react';
 
-function StudentEdit ({student}) {
-    const [thanks, setThanks] = useState(0)
+function StudentEdit({ student }) {
+  const [thanks, setThanks] = useState(0);
 
-  
-  
-    
-    function povtor() {
-      setThanks(() => {
+  function povtor() {
+    setThanks(() => {
       fetch(`/phaseshift/${student.id}`)
         .then((result) => result.json())
         .then((data) => {
           setThanks(data.status);
         });
     }, []);
-
   }
+
 
     return (
         <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -29,6 +27,5 @@ function StudentEdit ({student}) {
         </div>
     )
 }
-
 
 export default StudentEdit;
