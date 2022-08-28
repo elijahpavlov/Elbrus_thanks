@@ -1,29 +1,30 @@
 const PhaseShiftRouter = require('express').Router();
 const { Student } = require('../../db/models');
 
-PhaseShiftRouter.get('/', async (req, res) => {
+//Отправляет массив со студентами с азпрашиваемой фазе
+PhaseShiftRouter.get('/phase/:id', async (req, res) => {
   try {
-    const students = await Student.findAll({
-      order: [['thanks', 'DESC']],
-    });
+    const { id } = req.params;
+    const students = await Student.findAll({ raw: true, where: { phase: id } });
     res.json(students);
   } catch (error) {
     res.redirect('/error');
   }
 });
 
+// Меняет статус студента на повтор
 PhaseShiftRouter.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const updatedStudent = await Student.findAll({raw: true, where: { id } });
-    updatedStudent.status = "povtor";
-    await Student.update(updatedStudent, { where: {id}});
-    res.json({ status: 'povtor' });
+    await Student.update({ status: 'povtor' }, { where: { id } });
+    const student = await Student.findOne({ raw: true, where: { id }});
+    res.json(student);
   } catch (error) {
     res.json({ status: false });
   }
 });
 
+// Удаляет 3 фазу, другие фазы переносит, повторщиков не трогает
 PhaseShiftRouter.put('/', async (req, res) => {
   try {
     await Student.destroy({ where: { phase: 3, status: 'прошел' } });
