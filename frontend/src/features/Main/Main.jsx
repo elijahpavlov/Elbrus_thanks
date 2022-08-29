@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 // import { useState, useEffect } from "react";
 import React from 'react';
 
@@ -33,12 +34,18 @@ function Main() {
     <div>
       <div className="App">
         <header className="App-header">
-          <h1>Elbrus Thanks</h1>
-          <form action="/list" className="loginForm" onSubmit={handleSubmit}>
-            <input type="text" name="login" />
-            <input type="password" name="password" />
-            <div className="helpText" />
-            <button type="submit">Войти</button>
+          <form action="/list" className="loginForm" onSubmit={handleSubmit} style={{ width: '80vw', marginBottom: '15vh' }}>
+            <h1 style={{ color: '#4520AB', fontSize: '70px' }}>Elbrus Thanks</h1>
+            <input type="text" name="login" className="form-control form-control-lg" placeholder="Логин" />
+            <input type="password" name="password" className="form-control form-control-lg" placeholder="Пароль" style={{ marginTop: '10px', marginBottom: '10px' }} />
+            <div className="helpText" style={{ color: 'red' }} />
+            {/* <div className="form-check">
+              <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+              <label className="form-check-label" style={{ color: '#4520AB' }}>
+                Спасибо Лейле за атмосферу
+              </label>
+            </div> */}
+            <button type="submit" className="btn btn-primary btn-lg" style={{ marginTop: '30px' }}>Войти</button>
           </form>
         </header>
       </div>

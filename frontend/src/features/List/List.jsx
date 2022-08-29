@@ -23,24 +23,23 @@ function List() {
   }, [phase]);
 
   function phase1() {
-    // const filteredStudents = students.filter((student) => student.phase === 1);
-    // setStudents(filteredStudents);
     setPhase(1);
   }
   function phase2() {
-    // const filteredStudents = students.filter((student) => student.phase === 2);
-    // setStudents(filteredStudents);
     setPhase(2);
   }
   function phase3() {
-    // const filteredStudents = students.filter((student) => student.phase === 3);
-    // setStudents(filteredStudents);
     setPhase(3);
   }
 
   const filteredStudents = students.filter((student) => student.name
     .toLowerCase()
     .includes(value.toLowerCase()));
+
+  async function logout() {
+    await fetch('/api/auth/logout');
+    window.location.href('/');
+  }
 
   return (
     <div className="App">
@@ -64,11 +63,11 @@ function List() {
               style={{ width: '57px', backgroundColor: '#4520AB', color: '#29EDFF' }}
             />
             <ul className="dropdown-menu dropdown-menu-end" style={{ backgroundColor: '#f4f2f8', position: 'relative' }}>
-              <li><a className="dropdown-item" href="#">Перенос фазы</a></li>
+              <li><a className="dropdown-item" href="/edit">Перенос фазы</a></li>
               <li><a className="dropdown-item" href="#">Редактирование</a></li>
               <li><a className="dropdown-item" href="#">Личный кабинет</a></li>
               <li><hr className="dropdown-divider" /></li>
-              <li><a className="dropdown-item" href="#">Выйти</a></li>
+              <li><a onClick={logout} className="dropdown-item" href="/">Выйти</a></li>
             </ul>
           </div>
 
