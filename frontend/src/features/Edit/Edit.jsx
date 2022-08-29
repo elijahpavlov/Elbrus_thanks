@@ -7,67 +7,97 @@ import StudentEdit from './StudentEdit';
 
 function Edit() {
   const [students, setStudents] = useState([]);
+  const [newStudents, setNewStudents] = useState([]);
   const [phase, setPhase] = useState(3);
 
  // Отрисовывает студентов согласно фазе в состоянии
-if (phase > 0) {
-  useEffect(() => {
+ useEffect(() => {
+    if (phase > 0) {
     fetch(`/phaseshift/phase/${phase}`)
     .then((result) => result.json())
     .then((data) => setStudents(data));
+    } else {
+      fetch(`/phaseshift`,{
+        method: 'PUT'
+      }
+      )
+      .then((result) => result.json())
+      .then((data) => setStudents(data));  
+    } 
   }, [phase]);
-}
   
   // Изменяет состояние фазы
   function nextPhase() {
-    if (phase > 1) {
+    if(phase > -1 ){
       setPhase(phase - 1);
     }
   }
 
-  // Перевод студентов на следующие фазы с учетом повторов и удаление 3 фазы
-  async function shiftPhase() {
-    const response = await fetch('/phaseshift', {
-      method: 'PUT'
-    });
-    const result = await response.json();
+  async function addStudents(event) {
+      event.preventDefault();
 
-    console.log('result', result);
+      console.log(event.target);
+      
+      const data = {
+        name: event.target.name.value,
+        phase: event.target.phase.value,
+        thanks: 0,
+        status: 'прошел',
+      }
 
-    setPhase(phase-1);
-    setStudents(result);
-  };
+      const response = await fetch('/phaseshift/newstudents', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+      });
+
+      console.log('response', response)
+  
+      const newStudent = await response.json();
+
+      console.log('newStudent', newStudent)
+
+      setNewStudents((newStudents) => [
+        ...newStudents, 
+        newStudent 
+      ]);
+
+      event.target.reset();
+  }
 
   return (
     <div>
     <div className="App">
     <header className="App-header">
-    {(phase === 0)? 
+      {(phase === 0)? 
       <>
-      <form >
-        <h1>Добавить нового студента:</h1>
+      <form onSubmit={addStudents} method="POST" >
+      <h1>Добавить нового студента:</h1>
       <input type="text" name="name" placeholder='name of new student' />
       <br/>
       <input type="text" name="phase" placeholder='phase of new student' />
       <br/>
-      <input type="text" name="thanks" placeholder='thanks of new student' />
+      {/* <input type="text" name="thanks" placeholder='thanks of new student' />
+      <br/> */}
       <br/>
-      <br/>
-        <button>Добавить студента</button>
+      <button>Добавить студентов</button>
       </form>
       <form type="submit" action="/list">
-        <button>Перейти к списку студентов</button>
+      <button>Перейти к списку студентов</button>
       </form>
+      <h1>Перечень новых студентов первой фазы</h1>
+      <ul>
+          {newStudents.map((student) => 
+              <StudentEdit student={student}  key={student.id} />
+          )}
+      </ul>
+      <h1>Перечень повторщиков первой фазы:</h1>
       </>
       :
-      <></>
-  }
-        {(phase >= 1)?
       <h1>{`Выберете повторщиков c фазы ${phase}`}</h1>
-      :
-      <></>
-        }
-
+      }
       <ul>
           {students.map((student) => 
               <StudentEdit student={student}  key={student.id} />
@@ -75,15 +105,15 @@ if (phase > 0) {
       </ul>
 
       {(phase > 1)?
-        <button onClick={nextPhase}>{`Перейти к фазе ${phase-1}`}</button>
+      <button onClick={nextPhase}>{`Перейти к фазе ${phase-1}`}</button>
         :
-        <>
-        {(phase === 1)?
-          <button onClick={shiftPhase}> Перенести фазы</button>
+      <>
+      {(phase === 1)?
+      <button onClick={nextPhase}> Перенести фазы</button>
           :
-          <></>
-        }
-        </>
+      <></>
+      }
+      </>
       }
 
         </header>

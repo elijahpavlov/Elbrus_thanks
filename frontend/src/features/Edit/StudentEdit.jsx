@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 function StudentEdit({ student }) {
   const [status, setStatus] = useState('прошел');
 
-  async function povtor() {
+  async function повтор() {
     const response = await fetch(`/phaseshift/${student.id}`, { method: 'PUT' });
     const result = await response.json();
     setStatus(result.status);
@@ -14,7 +14,7 @@ function StudentEdit({ student }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'row' }}>
       <div>
-        <button id={student.id} onClick={povtor} style={{ listStyle: 'none', border: '1px solid black', margin: '5px', width: '500px', height: '50px' }} key={student.id}>
+        <button id={student.id} onClick={повтор} style={{ listStyle: 'none', border: '1px solid black', margin: '5px', width: '500px', height: '50px' }} key={student.id}>
           {student.name}
           <div>
             Фаза:
