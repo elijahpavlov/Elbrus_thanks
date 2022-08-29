@@ -5,6 +5,10 @@ const { Student } = require('../../db/models');
 PhaseShiftRouter.get('/phase/:id', async (req, res) => {
   try {
     const { id } = req.params;
+    if(id === 0) {
+      const students = await Student.findAll({ raw: true, where: { phase: id } });
+      res.json(students);
+    }
     const students = await Student.findAll({ raw: true, where: { phase: id } });
     res.json(students);
   } catch (error) {
@@ -31,7 +35,7 @@ PhaseShiftRouter.put('/', async (req, res) => {
     await Student.increment({ phase: 1 }, { where: { phase: 2, status: 'прошел' } });
     await Student.increment({ phase: 1 }, { where: { phase: 1, status: 'прошел' } });
     await Student.update({ status: 'прошел' }, { where: { status: 'povtor' } });
-    const students = await Student.findAll({ raw: true });
+    const students = await Student.findAll({ raw: true, where: { phase: 1 } });
     res.json(students);
   } catch (error) {
     res.redirect('/error');

@@ -7,12 +7,14 @@ function Edit() {
 
 
  // Отрисовывает студентов согласно фазе в состоянии
-useEffect(() => {
+if (phase > 0) {
+  useEffect(() => {
     fetch(`/phaseshift/phase/${phase}`)
-      .then((result) => result.json())
-      .then((data) => setStudents(data));
+    .then((result) => result.json())
+    .then((data) => setStudents(data));
   }, [phase]);
-
+}
+  
   // Изменяет состояние фазы
   function nextPhase() {
     if(phase > 1) {
@@ -27,8 +29,8 @@ useEffect(() => {
     });
     const result = await response.json();
     console.log('result', result);
-    setStudents(result);
     setPhase(phase-1);
+    setStudents(result);
   };
 
   return (
@@ -60,17 +62,19 @@ useEffect(() => {
       :
       <></>
         }
+
       <ul>
           {students.map((student) => 
-              <StudentEdit student={student}/>
+              <StudentEdit student={student}  key={student.id} />
           )}
       </ul>
+
       {(phase > 1)?
         <button onClick={nextPhase}>{`Перейти к фазе ${phase-1}`}</button>
         :
         <>
         {(phase === 1)?
-          <button onClick={shiftPhase}> Добавить новых студентов</button>
+          <button onClick={shiftPhase}> Перенести фазы</button>
           :
           <></>
         }
