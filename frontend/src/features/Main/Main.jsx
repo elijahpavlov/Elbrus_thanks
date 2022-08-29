@@ -35,7 +35,7 @@ function Main() {
       <div className="App">
         <header className="App-header">
           <form action="/list" className="loginForm" onSubmit={handleSubmit} style={{ width: '80vw', marginBottom: '15vh' }}>
-            <h1 style={{ color: '#4520AB', fontSize: '70px' }}>Elbrus Thanks</h1>
+            <img src="/logo.png" alt="logo" width="300vw" />
             <input type="text" name="login" className="form-control form-control-lg" placeholder="Логин" />
             <input type="password" name="password" className="form-control form-control-lg" placeholder="Пароль" style={{ marginTop: '10px', marginBottom: '10px' }} />
             <div className="helpText" style={{ color: 'red' }} />
@@ -45,7 +45,7 @@ function Main() {
                 Спасибо Лейле за атмосферу
               </label>
             </div> */}
-            <button type="submit" className="btn btn-primary btn-lg" style={{ marginTop: '30px' }}>Войти</button>
+            <button type="submit" className="btn btn-primary btn-lg" style={{ marginTop: '30px', backgroundColor: '#4520AB', color: '#29EDFF' }}>Войти</button>
           </form>
         </header>
       </div>
