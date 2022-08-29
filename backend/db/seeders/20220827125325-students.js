@@ -1,9 +1,8 @@
-'use strict';
+"use strict";
 
 module.exports = {
   async up(queryInterface) {
-    const studentsData = [
-      
+    const studentsData = [      
       { name: 'Алишер Хамидов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
       { name: 'Чодураа Тюлюш', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
       { name: 'Кирилл Кириченко', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
@@ -60,10 +59,10 @@ module.exports = {
       { name: 'Михаил Ельцов', phase: 3, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
     ];
 
-    await queryInterface.bulkInsert('Students', studentsData);
+    await queryInterface.bulkInsert("Students", studentsData);
   },
 
   async down(queryInterface) {
-    await queryInterface.bulkDelete('Students')
-  }
+    await queryInterface.bulkDelete("Students");
+  },
 };

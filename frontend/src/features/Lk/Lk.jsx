@@ -16,9 +16,9 @@ function Lk() {
   //       body: JSON.stringify({ login, password }),
   //     });
 
-  //     const result = await response.json();
-  //   }
-  // }
+      const result = await response.json();
+    }
+  }
 
   return (
     <div>
