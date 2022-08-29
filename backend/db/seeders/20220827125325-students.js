@@ -14,7 +14,6 @@ module.exports = {
       { name: 'Александр Федасов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
       { name: 'Эдуард Саубанов', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
       { name: 'Елена Бубеева', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
-      { name: 'Хочет на повтор 1', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
       
       
       { name: 'Антонина Адюкова', phase: 2, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
@@ -23,13 +22,11 @@ module.exports = {
       { name: 'Андрей Доманский', phase: 2, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
       { name: 'Анжелика Суровцева', phase: 2, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
       { name: 'Антон Горбенко', phase: 2, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
-      { name: 'Хочет на повтор 3', phase: 2, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
       { name: 'Карен Абрамян', phase: 2, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
       { name: 'Леонид Егоров', phase: 2, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
       { name: 'Николай Филиппов', phase: 2, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
       { name: 'Андрей Недогибченко', phase: 2, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
       { name: 'Виталий Терещенко', phase: 2, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
-      { name: 'Хочет на повтор 2', phase: 2, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
       { name: 'Анна Викарчук', phase: 2, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
       { name: 'Яна Смирнова', phase: 2, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
       { name: 'Анатолий Кротов', phase: 2, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
@@ -38,7 +35,7 @@ module.exports = {
       { name: 'Денис Подлесный', phase: 2, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
       { name: 'Лидия Лалетина', phase: 2, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
       { name: 'Сергей Спирин', phase: 2, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
-      { name: 'Хочет на повтор 2', phase: 2, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
+
       
       { name: 'Хочет на повтор 3', phase: 3, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },
       { name: 'Владимир Леонов', phase: 3, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date() },

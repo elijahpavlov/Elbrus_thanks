@@ -62,22 +62,17 @@ function List({user}) {
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
-
-              style={{ width: '57px', backgroundColor: '#4520AB', color: '#29EDFF' }}
+              style={{ width: '65px', fontSize: '25px', backgroundColor: '#4520AB', color: '#29EDFF' }}
               />
             <ul className="dropdown-menu dropdown-menu-end" style={{ backgroundColor: '#f4f2f8', position: 'relative' }}>
-              <li><a className="dropdown-item" href="/edit">Перенос фазы</a></li>
-              <li><a className="dropdown-item" href="#">Редактирование</a></li>
-
-              style={{ width: '65px', fontSize: '25px', backgroundColor: '#4520AB', color: '#29EDFF' }}
-            />
-            <ul className="dropdown-menu dropdown-menu-end" style={{ backgroundColor: '#f4f2f8', position: 'relative', fontSize: '20px' }}>
-
               <li><a className="dropdown-item" href="/lk">Личный кабинет</a></li>
               <li><a className="dropdown-item" href="/edit">Перенос фазы</a></li>
-              {/* <li><a className="dropdown-item" href="#">Редактирование</a></li> */}
               <li><hr className="dropdown-divider" /></li>
               <li><a onClick={logout} className="dropdown-item" href="/">Выйти</a></li>
+            </ul>
+              {/* <li><a className="dropdown-item" href="#">Редактирование</a></li> */}
+            <ul className="dropdown-menu dropdown-menu-end" style={{ backgroundColor: '#f4f2f8', position: 'relative', fontSize: '20px' }}>
+              {/* <li><a className="dropdown-item" href="#">Редактирование</a></li> */}
             </ul>
           </div>
 
