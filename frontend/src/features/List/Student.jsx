@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/button-has-type */
@@ -31,14 +32,36 @@ function Student({ student }) {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row' }}>
-      <div className="buttonsDiv">
-        <button onClick={minus} className="minusButton">-</button>
-        <button onClick={plus} onTouchCancel className="studentInfoButton">
-          {student.name}
-          <div>{thanks}</div>
-        </button>
-      </div>
+    <div
+      className="btn-group"
+      role="group"
+      aria-label="Basic mixed styles example"
+      style={{ display: 'flex', flexWrap: 'wrap', alignContent: 'center', flexDirection: 'row', justifyContent: 'center' }}
+    >
+      <button
+        onClick={minus}
+        type="button"
+        className="btn btn-outline-secondary minus-button"
+        style={{ flexBasis: '5%', height: '7vh', fontSize: '20px', color: 'black' }}
+      >
+        ➖
+      </button>
+      <button
+        onClick={plus}
+        type="button"
+        className="btn btn-outline-secondary"
+        style={{ flexBasis: '65%', flexShrink: '0', height: '7vh', fontSize: '20px', color: 'black' }}
+      >
+        {student.name}
+      </button>
+      <button
+        onClick={plus}
+        type="button"
+        className="btn btn-outline-secondary"
+        style={{ flexBasis: '20%', flexShrink: '0', height: '7vh', fontSize: '20px', color: 'black' }}
+      >
+        {thanks}
+      </button>
     </div>
   );
 }

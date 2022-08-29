@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
-import StudentEdit from "./StudentEdit.jsx";
+/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable no-undef */
+/* eslint-disable max-len */
+/* eslint-disable react/button-has-type */
+import { React, useState, useEffect } from 'react';
+import StudentEdit from './StudentEdit';
 
 function Edit() {
   const [students, setStudents] = useState([]);
   const [phase, setPhase] = useState(3);
-
 
  // Отрисовывает студентов согласно фазе в состоянии
 if (phase > 0) {
@@ -17,10 +20,10 @@ if (phase > 0) {
   
   // Изменяет состояние фазы
   function nextPhase() {
-    if(phase > 1) {
-      setPhase(phase-1);
+    if (phase > 1) {
+      setPhase(phase - 1);
     }
-  };
+  }
 
   // Перевод студентов на следующие фазы с учетом повторов и удаление 3 фазы
   async function shiftPhase() {
@@ -28,7 +31,9 @@ if (phase > 0) {
       method: 'PUT'
     });
     const result = await response.json();
+
     console.log('result', result);
+
     setPhase(phase-1);
     setStudents(result);
   };
@@ -81,10 +86,10 @@ if (phase > 0) {
         </>
       }
 
-    </header>
+        </header>
+      </div>
     </div>
-    </div>
-    );
+  );
 }
 
 export default Edit;
