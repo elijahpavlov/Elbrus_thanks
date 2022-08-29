@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable react/react-in-jsx-scope */
 function Lk() {
@@ -16,8 +17,8 @@ function Lk() {
   //       body: JSON.stringify({ login, password }),
   //     });
 
-    //   const result = await response.json();
-    // }
+  //   const result = await response.json();
+  // }
   // }
 
   return (
