@@ -1,18 +1,18 @@
-const authRouterApi = require("express").Router();
-const bcrypt = require("bcrypt");
+const authRouterApi = require('express').Router();
+const bcrypt = require('bcrypt');
 
-const { User } = require("../../db/models");
+const { User } = require('../../db/models');
 
 // Роутер "ЛОГИ" по ресту
 
-authRouterApi.post("/auth/login", async (req, res) => {
+authRouterApi.post('/auth/login', async (req, res) => {
   if (req.body.login.length > 4 && req.body.password.length > 7) {
     let user;
     try {
       user = await User.findOne({ where: { login: req.body.login } });
 
       if (!user) {
-        res.json({ message: "Нет пользователя с таким логин и/или паролем." });
+        res.json({ message: 'Нет пользователя с таким логин и/или паролем.' });
         return;
       }
     } catch ({ message }) {
@@ -24,7 +24,7 @@ authRouterApi.post("/auth/login", async (req, res) => {
       const compPass = await bcrypt.compare(req.body.password, user.password);
 
       if (!compPass) {
-        res.json({ message: "Не верный логин и/или пароль." });
+        res.json({ message: 'Не верный логин и/или пароль.' });
         return;
       }
     } catch ({ message }) {
@@ -37,31 +37,31 @@ authRouterApi.post("/auth/login", async (req, res) => {
       login: user.login,
     };
 
-    res.json({ message: "success", user });
+    res.json({ message: 'success', user });
   } else {
-    res.json({ message: "Слишком короткий логин и/или пароль." });
+    res.json({ message: 'Слишком короткий логин и/или пароль.' });
   }
 });
 
 // Роутер "ЛОГАУТА" с удалением сессии
 
-authRouterApi.get("/auth/logout", (req, res) => {
+authRouterApi.get('/auth/logout', (req, res) => {
   req.session.destroy((error) => {
     if (error) {
-      res.json({ error: "Не удалось выйти" });
+      res.json({ error: 'Не удалось выйти' });
       return;
     }
 
-    res.clearCookie("user_sid");
-    res.redirect("/");
+    res.clearCookie('user_sid');
+    res.redirect('/');
   });
 });
 
-authRouterApi.get("/", (req, res) => {
-  if (req.session.user.login === "Leyla") {
+authRouterApi.get('/', (req, res) => {
+  if (req.session.user.login === 'Leyla') {
     res.json({ isAdmin: true });
   } else {
-    res.redirect("/");
+    res.redirect('/');
   }
 });
 
