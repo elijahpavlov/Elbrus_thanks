@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-shadow */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable no-undef */
 /* eslint-disable max-len */
@@ -10,111 +12,149 @@ function Edit() {
   const [newStudents, setNewStudents] = useState([]);
   const [phase, setPhase] = useState(3);
 
- // Отрисовывает студентов согласно фазе в состоянии
- useEffect(() => {
+  // Отрисовывает студентов согласно фазе в состоянии
+  useEffect(() => {
     if (phase > 0) {
-    fetch(`/phaseshift/phase/${phase}`)
-    .then((result) => result.json())
-    .then((data) => setStudents(data));
+      fetch(`/phaseshift/phase/${phase}`)
+        .then((result) => result.json())
+        .then((data) => setStudents(data));
     } else {
-      fetch(`/phaseshift`,{
+      fetch('/phaseshift', {
         method: 'PUT'
       }
       )
-      .then((result) => result.json())
-      .then((data) => setStudents(data));  
-    } 
+        .then((result) => result.json())
+        .then((data) => setStudents(data));
+    }
   }, [phase]);
-  
+
   // Изменяет состояние фазы
   function nextPhase() {
-    if(phase > -1 ){
+    if (phase > -1) {
       setPhase(phase - 1);
     }
   }
 
   async function addStudents(event) {
-      event.preventDefault();
+    event.preventDefault();
 
-      console.log(event.target);
-      
-      const data = {
-        name: event.target.name.value,
-        phase: event.target.phase.value,
-        thanks: 0,
-        status: 'прошел',
-      }
+    const data = {
+      name: event.target.name.value,
+      phase: event.target.phase.value,
+      thanks: 0,
+      status: 'прошел',
+    };
 
-      const response = await fetch('/phaseshift/newstudents', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data),
-      });
+    const response = await fetch('/phaseshift/newstudents', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data),
+    });
 
-      console.log('response', response)
-  
-      const newStudent = await response.json();
+    const newStudent = await response.json();
 
-      console.log('newStudent', newStudent)
+    setNewStudents((newStudents) => [
+      ...newStudents,
+      newStudent
+    ]);
 
-      setNewStudents((newStudents) => [
-        ...newStudents, 
-        newStudent 
-      ]);
-
-      event.target.reset();
+    event.target.reset();
   }
 
   return (
     <div>
-    <div className="App">
-    <header className="App-header">
-      {(phase === 0)? 
-      <>
-      <form onSubmit={addStudents} method="POST" >
-      <h1>Добавить нового студента:</h1>
-      <input type="text" name="name" placeholder='name of new student' />
-      <br/>
-      <input type="text" name="phase" placeholder='phase of new student' />
-      <br/>
-      {/* <input type="text" name="thanks" placeholder='thanks of new student' />
+      <div className="App">
+        <header className="App-header">
+          {(phase === 0)
+            ? (
+              <>
+                <form onSubmit={addStudents} method="POST">
+                  <h1 style={{ color: '#4520AB', margin: '30px' }}>Добавьте новых студентов:</h1>
+                  <input
+                    type="text"
+                    name="name"
+                    className="form-control form-control-lg"
+                    placeholder="Имя студента"
+                    style={{ marginBottom: '10px' }}
+                  />
+                  <input
+                    type="text"
+                    name="phase"
+                    className="form-control form-control-lg"
+                    placeholder="Номер фазы"
+                  />
+                  <br />
+                  {/* <input type="text" name="thanks" placeholder='thanks of new student' />
       <br/> */}
-      <br/>
-      <button>Добавить студентов</button>
-      </form>
-      <form type="submit" action="/list">
-      <button>Перейти к списку студентов</button>
-      </form>
-      <h1>Перечень новых студентов первой фазы</h1>
-      <ul>
-          {newStudents.map((student) => 
-              <StudentEdit student={student}  key={student.id} />
-          )}
-      </ul>
-      <h1>Перечень повторщиков первой фазы:</h1>
-      </>
-      :
-      <h1>{`Выберете повторщиков c фазы ${phase}`}</h1>
-      }
-      <ul>
-          {students.map((student) => 
-              <StudentEdit student={student}  key={student.id} />
-          )}
-      </ul>
+                  <button
+                    className="btn btn-primary btn-lg"
+                    style={{ backgroundColor: '#4520AB', color: '#29EDFF' }}
+                  >
+                    Добавить студентов
+                  </button>
+                </form>
+                <form type="submit" action="/list">
+                  <button
+                    className="btn btn-primary  btn-lg"
+                    style={{ backgroundColor: '#4520AB', color: '#29EDFF', margin: '10px' }}
+                  >
+                    Перейти к списку студентов
+                  </button>
+                </form>
 
-      {(phase > 1)?
-      <button onClick={nextPhase}>{`Перейти к фазе ${phase-1}`}</button>
-        :
-      <>
-      {(phase === 1)?
-      <button onClick={nextPhase}> Перенести фазы</button>
-          :
-      <></>
-      }
-      </>
-      }
+                <h4 style={{ color: '#4520AB', margin: '30px' }}>
+                  Перечень новых студентов первой фазы:
+                </h4>
+
+                <div>
+                  {newStudents.map((student) =>
+                    <StudentEdit student={student} key={student.id} />
+                  )}
+                </div>
+                <h4 style={{ color: '#4520AB', margin: '30px' }}>
+                  Перечень повторщиков первой фазы:
+                </h4>
+              </>
+            )
+            : (
+              <h1 style={{ color: '#4520AB', margin: '30px' }}>
+                {`Выберете повторщиков c фазы ${phase}`}
+              </h1>
+            )}
+          <div>
+            {students.map((student) =>
+              <StudentEdit student={student} key={student.id} />
+            )}
+          </div>
+
+          {(phase > 1)
+            ? (
+              <button
+                onClick={nextPhase}
+                className="btn btn-primary btn-lg"
+                style={{ backgroundColor: '#4520AB', color: '#29EDFF', margin: '5vh' }}
+              >
+                {`Перейти к фазе ${phase - 1}`}
+              </button>
+            )
+            : (
+              <>
+                {(phase === 1)
+                  ? (
+                    <button
+                      onClick={nextPhase}
+                      className="btn btn-primary btn-lg"
+                      style={{ backgroundColor: '#4520AB', color: '#29EDFF', margin: '5vh' }}
+                    >
+                      {' '}
+                      Перенести фазы
+                    </button>
+                  )
+                  : <></>}
+              </>
+            )}
 
         </header>
       </div>

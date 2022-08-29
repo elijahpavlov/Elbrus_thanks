@@ -1,20 +1,20 @@
 /* eslint-disable no-console */
 /* eslint-disable react/react-in-jsx-scope */
 function Lk() {
-  async function handleSubmit(event) {
-    event.preventDefault();
-    const login = event.target.login.value;
-    const password = event.target.password.value;
-    const repeatPassword = event.target.repeatPassword.value;
+  // async function handleSubmit(event) {
+  //   event.preventDefault();
+  //   const login = event.target.login.value;
+  //   const password = event.target.password.value;
+  //   const repeatPassword = event.target.repeatPassword.value;
 
-    if (password === repeatPassword) {
-      const response = await fetch('/lk', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ login, password }),
-      });
+  //   if (password === repeatPassword) {
+  //     const response = await fetch('/lk', {
+  //       method: 'PUT',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ login, password }),
+  //     });
 
       const result = await response.json();
     }
