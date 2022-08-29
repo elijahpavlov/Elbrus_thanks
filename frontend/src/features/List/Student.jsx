@@ -41,7 +41,7 @@ function Student({ student }) {
       <button
         onClick={minus}
         type="button"
-        className="btn btn-outline-secondary minus-button"
+        className="btn btn-outline-secondary"
         style={{ flexBasis: '5%', height: '7vh', fontSize: '20px', color: 'black' }}
       >
         ➖
@@ -50,7 +50,7 @@ function Student({ student }) {
         onClick={plus}
         type="button"
         className="btn btn-outline-secondary"
-        style={{ flexBasis: '65%', flexShrink: '0', height: '7vh', fontSize: '20px', color: 'black' }}
+        style={{ hover: 'none', flexBasis: '65%', flexShrink: '0', height: '7vh', fontSize: '20px', color: 'black' }}
       >
         {student.name}
       </button>
