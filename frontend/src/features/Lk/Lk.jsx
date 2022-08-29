@@ -17,7 +17,6 @@ function Lk() {
       });
 
       const result = await response.json();
-      console.log(result);
     }
   }
 
