@@ -55,7 +55,6 @@ PhaseShiftRouter.put("/", async (req, res) => {
 PhaseShiftRouter.post("/newstudents", async (req, res) => {
   try {
     const { name, phase, thanks, status } = req.body;
-    console.log("req.body", req.body);
     const student = await Student.create({
       raw: true,
       name,

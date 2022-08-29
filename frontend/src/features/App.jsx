@@ -9,15 +9,6 @@ import Main from './Main/Main';
 import Lk from './Lk/Lk';
 
 function App() {
-  // useEffect(() => {
-  //   async function getUser() {
-  //     const response = await fetch('/');
-  //     const result = await response.json();
-  //     console.log(result);
-  //   }
-  //   getUser();
-  // }, []);
-
   return (
     <Routes>
       <Route path="/" element={<Main />} />
