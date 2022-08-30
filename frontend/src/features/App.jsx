@@ -10,17 +10,22 @@ import Lk from './Lk/Lk';
 import Page404 from './Error/Page404';
 
 function App() {
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(null);
 
   useEffect(() => {
-      fetch('api/')
-        .then((result) => result.json())
-        .then((data) => setIsAdmin(data.isAdmin));
+    fetch('api/')
+      .then((result) => result.json())
+      .then((data) => {
+        const id = setTimeout(() => {
+          setIsAdmin(data.isAdmin);
+          clearTimeout(id);
+        }, 800);
+      });
   }, []);
 
   return (
     <Routes>
-      <Route path="/" element={<Main user={isAdmin}  />} />
+      <Route path="/" element={<Main user={isAdmin} />} />
       <Route path="/list" element={<List user={isAdmin} />} />
       <Route path="/phaseshift" element={<PhaseShift user={isAdmin} />} />
       <Route path="/lk" element={<Lk user={isAdmin} />} />

@@ -16,7 +16,7 @@ const PORT = process.env.PORT ?? 4000;
 
 app.use('/phaseshift', phaseShiftRouter);
 app.use('/api', authRouterApi);
-app.use('/list', listRouter);
+app.use('/api/list', listRouter);
 app.use('/lk', lkRouterApi);
 
 app.listen(PORT, async () => {
