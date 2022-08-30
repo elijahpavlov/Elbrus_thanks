@@ -24,7 +24,7 @@ authRouterApi.post('/auth/login', async (req, res) => {
       const compPass = await bcrypt.compare(req.body.password, user.password);
 
       if (!compPass) {
-        res.json({ message: 'Не верный логин и/или пароль.' });
+        res.json({ message: 'Неверный логин и/или пароль.' });
         return;
       }
     } catch ({ message }) {

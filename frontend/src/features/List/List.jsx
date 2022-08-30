@@ -65,7 +65,7 @@ function List({ user }) {
                     style={{ width: '57px', backgroundColor: '#4520AB', color: '#29EDFF' }}
                   />
                   <ul className="dropdown-menu dropdown-menu-end" style={{ backgroundColor: '#f4f2f8', position: 'relative' }}>
-                    <li><a className="dropdown-item" href="/edit">Перенос фазы</a></li>
+                    <li><a className="dropdown-item" href="/phaseshift">Перенос фазы</a></li>
                     <li><a className="dropdown-item" href="/lk">Личный кабинет</a></li>
                     {/* <li><a className="dropdown-item" href="#">Редактирование</a></li> */}
                     <li><hr className="dropdown-divider" /></li>

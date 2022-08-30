@@ -3,7 +3,7 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import Edit from './Edit/Edit';
+import PhaseShift from './PhaseShift/PhaseShift';
 import List from './List/List';
 import Main from './Main/Main';
 import Lk from './Lk/Lk';
@@ -21,8 +21,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Main />} />
       <Route path="/list" element={<List user={isAdmin} />} />
-      <Route path="/edit" element={<Edit />} />
-      <Route path="/lk" element={<Lk />} />
+      <Route path="/phaseshift" element={<PhaseShift user={isAdmin} />} />
+      <Route path="/lk" element={<Lk user={isAdmin} />} />
     </Routes>
   );
 }
