@@ -7,6 +7,7 @@ import PhaseShift from './PhaseShift/PhaseShift';
 import List from './List/List';
 import Main from './Main/Main';
 import Lk from './Lk/Lk';
+import Page404 from './Error/Page404';
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -23,6 +24,8 @@ function App() {
       <Route path="/list" element={<List user={isAdmin} />} />
       <Route path="/phaseshift" element={<PhaseShift user={isAdmin} />} />
       <Route path="/lk" element={<Lk user={isAdmin} />} />
+      <Route path="/error" element={<Page404 user={isAdmin} />} />
+      <Route path="*" element={<Page404 user={isAdmin} />} />
     </Routes>
   );
 }

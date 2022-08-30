@@ -58,7 +58,7 @@ authRouterApi.get('/auth/logout', (req, res) => {
 });
 
 authRouterApi.get('/', (req, res) => {
-  if (req.session.user.login === 'Leyla') {
+  if (req.session) {
     res.json({ isAdmin: true });
   } else {
     res.redirect('/');
