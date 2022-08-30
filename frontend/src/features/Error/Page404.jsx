@@ -9,14 +9,14 @@ function Page404() {
       <div className="App">
         <header className="App-header">
           <div>
-            <a href="/list">
+            <a href="/">
               <img src="/logo.png" alt="logo" width="300vw" />
             </a>
             <h1 style={{ color: '#4520AB' }}>
               Что-то пошло не так
               {' '}
             </h1>
-            <a href="list" style={{ color: '#4520AB' }}>На главную</a>
+            <a href="/" style={{ color: '#4520AB' }}>На главную</a>
           </div>
         </header>
       </div>

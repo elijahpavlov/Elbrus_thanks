@@ -1,13 +1,12 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable react/react-in-jsx-scope */
-import { React, useState} from 'react';
+import { React, useState } from 'react';
 
-function Lk({isAdmin}) {
+function Lk() {
+  const [message, setMessage] = useState('');
 
-  const [password, setPassword] = useState('');
-
-  async function userEdit (event) {
+  async function userEdit(event) {
     event.preventDefault();
     const login = event.target.login.value;
     const password = event.target.password.value;
@@ -21,24 +20,23 @@ function Lk({isAdmin}) {
         },
         body: JSON.stringify({ login, password }),
       });
-    console.log(response);
-    const result = await response.json();
-    console.log(result);
-    if (result.update === true){
-    window.location.href="/list"
-    } else{
-      setPassword(result.update)
+      console.log(response);
+      const result = await response.json();
+      console.log(result);
+      if (result.update === true) {
+        window.location.href = '/list';
+      } else {
+        setMessage(result.update);
+      }
+    } else {
+      setMessage('Пароли не совпадают');
     }
-  } else {
-    setPassword('Пароли не совпадают')
-  }
   }
 
   return (
     <div>
       <div className="App">
         <header className="App-header">
-          {/* <form action="/lk" className="loginChangeForm" onSubmit={userEdit} style={{ width: '80vw', marginBottom: '15vh' }}> */}
           <form action="/lk" className="loginChangeForm" onSubmit={userEdit} style={{ width: '80vw', marginBottom: '15vh' }}>
             <h1 style={{ color: '#4520AB', fontSize: '50px', margin: '5vh' }}>Личный кабинет</h1>
             <h4 style={{ color: '#4520AB' }}>Редактирование пользователя:</h4>
@@ -48,7 +46,7 @@ function Lk({isAdmin}) {
             <div className="helpText" style={{ color: 'red' }} />
             <button type="submit" className="btn btn-primary btn-lg" style={{ marginTop: '30px' }}>Изменить</button>
           </form>
-          <div style={{ color: '#4520AB' }}>{password}</div>
+          <div style={{ color: '#4520AB' }}>{message}</div>
         </header>
       </div>
     </div>
