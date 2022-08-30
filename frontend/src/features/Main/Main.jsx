@@ -2,7 +2,12 @@
 // import { useState, useEffect } from "react";
 import React from 'react';
 
-function Main() {
+function Main({user}) {
+
+  if(user === true){
+    window.location.replace('/list');
+  }
+
   async function handleSubmit(event) {
     event.preventDefault();
     const form = event.target;

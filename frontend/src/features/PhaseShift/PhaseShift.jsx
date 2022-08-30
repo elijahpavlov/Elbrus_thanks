@@ -66,7 +66,7 @@ function PhaseShift({ user }) {
 
   return (
     <div>
-      {(user.isAdmin)
+      {user
         ? (
           <div className="App">
             <header className="App-header">
