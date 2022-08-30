@@ -42,7 +42,7 @@ function List({ user }) {
 
   return (
     <>
-      {(user.isAdmin)
+      {user
         ? (
           <div className="App">
             <header className="App-header">

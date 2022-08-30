@@ -36,9 +36,10 @@ function Lk({isAdmin}) {
 
   return (
     <div>
+            {user
+        ? 
       <div className="App">
         <header className="App-header">
-          {/* <form action="/lk" className="loginChangeForm" onSubmit={userEdit} style={{ width: '80vw', marginBottom: '15vh' }}> */}
           <form action="/lk" className="loginChangeForm" onSubmit={userEdit} style={{ width: '80vw', marginBottom: '15vh' }}>
             <h1 style={{ color: '#4520AB', fontSize: '50px', margin: '5vh' }}>Личный кабинет</h1>
             <h4 style={{ color: '#4520AB' }}>Редактирование пользователя:</h4>
@@ -51,6 +52,8 @@ function Lk({isAdmin}) {
           <div style={{ color: '#4520AB' }}>{password}</div>
         </header>
       </div>
+      :
+      <></>}
     </div>
   );
 }
