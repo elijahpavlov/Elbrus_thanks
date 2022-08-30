@@ -40,7 +40,7 @@ function Main() {
             <input type="password" name="password" className="form-control form-control-lg" placeholder="Пароль" style={{ marginTop: '10px', marginBottom: '10px' }} />
             <div className="helpText" style={{ color: 'red' }} />
             <div className="form-check">
-              <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+              <input className="form-check-input" type="checkbox" checked="checked" value="" id="flexCheckDefault" />
               <label className="form-check-label" style={{ color: '#4520AB' }}>
                 Спасибо Лейле за атмосферу
               </label>
