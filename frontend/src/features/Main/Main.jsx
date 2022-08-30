@@ -1,11 +1,11 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 // import { useState, useEffect } from "react";
 import React from 'react';
 
-function Main({user}) {
-
-  if(user === true){
-    window.location.replace('/list');
+function Main({ user }) {
+  if (user === true) {
+    window.location.assign('/list');
   }
 
   async function handleSubmit(event) {
@@ -29,7 +29,7 @@ function Main({user}) {
     // data.user.login
 
     if (data.message === 'success') {
-      window.location.replace('/list');
+      window.location.assign('/list');
     } else {
       document.querySelector('.helpText').innerText = data.message;
     }
