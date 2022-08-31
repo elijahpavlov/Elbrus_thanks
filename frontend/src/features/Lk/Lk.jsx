@@ -2,16 +2,15 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable react/react-in-jsx-scope */
-import { React, useState } from 'react';
-import { useContext } from 'react';
+import { React, useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import UserContext from '../Context/Context';
 import Page404 from '../Error/Page404';
-import { useNavigate } from 'react-router-dom';
 
-  function Lk() {
+function Lk() {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
-  const [context, setContext] = useContext(UserContext);
+  const [context] = useContext(UserContext);
 
   async function userEdit(event) {
     event.preventDefault();
@@ -29,7 +28,7 @@ import { useNavigate } from 'react-router-dom';
       });
       const result = await response.json();
       if (result.update === true) {
-        navigate('/list')
+        navigate('/list');
       } else {
         setMessage(result.update);
       }
@@ -65,7 +64,7 @@ import { useNavigate } from 'react-router-dom';
             <div className="helpText" style={{ color: 'red' }} />
             <button type="submit" className="btn btn-primary btn-lg" style={{ margin: '30px', backgroundColor: '#4520AB', color: '#29EDFF' }}>Изменить</button>
           </form>
-            <button type="click" onClick={() => navigate('/list')} className="btn btn-primary btn-lg" style={{ margin: '30px', backgroundColor: '#4520AB', color: '#29EDFF' }}>Вернуться к списку студентов</button>
+          <button type="button" onClick={() => navigate('/list')} className="btn btn-primary btn-lg" style={{ margin: '30px', backgroundColor: '#4520AB', color: '#29EDFF' }}>Вернуться к списку студентов</button>
           <div style={{ color: '#4520AB' }}>{message}</div>
         </header>
       </div>

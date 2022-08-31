@@ -10,7 +10,7 @@ function Edit() {
   const [students, setStudents] = useState([]);
   const [value, setValue] = useState('');
   const [phase, setPhase] = useState(0);
-  const [context, setContext] = useContext(UserContext);
+  const [context] = useContext(UserContext);
 
   useEffect(() => {
     fetch('/api/list')

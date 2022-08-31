@@ -6,8 +6,7 @@ function StudentEdit({ student }) {
   const [status, setStatus] = useState('прошел');
 
   async function povtor() {
-    console.log('status', status);
-    if (status === 'прошел'){
+    if (status === 'прошел') {
       const response = await fetch(`/phaseshift/${student.id}`, { method: 'PUT' });
       const result = await response.json();
       setStatus(result.status);

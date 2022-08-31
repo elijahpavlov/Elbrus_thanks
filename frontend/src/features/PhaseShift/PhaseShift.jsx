@@ -5,8 +5,8 @@
 /* eslint-disable no-undef */
 /* eslint-disable max-len */
 /* eslint-disable react/button-has-type */
-import { React, useState, useEffect } from 'react';
-import { useContext } from 'react';
+import { React, useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import UserContext from '../Context/Context';
 import Page404 from '../Error/Page404';
 import StudentEdit from './StudentEdit';
@@ -15,7 +15,8 @@ function PhaseShift() {
   const [students, setStudents] = useState([]);
   const [newStudents, setNewStudents] = useState([]);
   const [phase, setPhase] = useState(3);
-  const [context, setContext] = useContext(UserContext);
+  const [context] = useContext(UserContext);
+  const navigate = useNavigate();
 
   // Отрисовывает студентов согласно фазе в состоянии
   useEffect(() => {
@@ -86,7 +87,7 @@ function PhaseShift() {
       {context === true && (
       <div className="App">
         <header className="App-header">
-          <div><a href="/list">Вернуться на главную</a></div>
+          <button type="button" onClick={() => navigate('/list')} className="btn btn-primary btn-lg" style={{ margin: '30px', backgroundColor: '#4520AB', color: '#29EDFF' }}>Вернуться к списку студентов</button>
 
           {(phase === 0)
             ? (

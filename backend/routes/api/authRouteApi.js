@@ -59,10 +59,8 @@ authRouterApi.get('/auth/logout', (req, res) => {
 
 authRouterApi.get('/', (req, res) => {
   if (req.session.user) {
-    console.log('req.session.user', req.session.user);
     res.json({ isAdmin: true });
   } else {
-    console.log('req.session.user', false);
     res.json({ isAdmin: false });
   }
 });
