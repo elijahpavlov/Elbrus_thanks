@@ -21,12 +21,10 @@ listRouter.put('/:id', async (req, res) => {
       return;
     }
 
-    if ('thanks' in req.body) {
-      if (req.body.status === 'plus') {
-        student.thanks = req.body.thanks + 1;
-      } else {
-        student.thanks = req.body.thanks - 1;
-      }
+    if (req.body.status === 'plus') {
+      student.thanks = req.body.thanks + 1;
+    } else {
+      student.thanks = req.body.thanks - 1;
     }
 
     await student.save();
