@@ -14,6 +14,10 @@ listRouter.get('/', async (req, res) => {
 
 listRouter.put('/:id', async (req, res) => {
   try {
+    if (!req.session || !req.session.user) {
+      res.send('Это очень предсказуемо!');
+      return;
+    }
     const student = await Student.findByPk(Number(req.params.id));
 
     if (!student) {
