@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-restricted-globals */
 /* eslint-disable react/button-has-type */
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
@@ -16,12 +18,33 @@ function EditStudent({ student }) {
       headers: { 'Content-Type': 'application/json' },
     });
     const result = await response.json();
-    console.log(result);
+  }
+
+  async function deleteStudent(event) {
+    const answer = confirm(`Удалить студента ${student.name}?`);
+    if (answer) {
+      const response = await fetch(`/api/delete/${student.id}`, {
+        method: 'DELETE',
+      });
+      const result = await response.json();
+      if (result.message === 'success') {
+        const del = document.getElementById(`${student.id}`).remove();
+      }
+    }
   }
 
   return (
-    <form action={`/api/edit/${student.id}`} method="PUT">
+    <form id={`${student.id}`}>
       <div className="input-group">
+        <button
+          onClick={deleteStudent}
+          className="btn btn-outline-secondary"
+          type="button"
+          style={{ width: '11vw', height: '7vh', fontSize: '12px', color: '#4520AB', border: '1px solid lightgrey', fontWeight: 'bold' }}
+        >
+          X
+
+        </button>
         <input
           name="name"
           className="form-control form-control-lg"
@@ -36,15 +59,15 @@ function EditStudent({ student }) {
           placeholder="Номер фазы"
           value={phase}
           onChange={(event) => setphase(event.target.value)}
-          style={{ width: '25vw', height: '7vh', fontSize: '15px' }}
+          style={{ width: '14vw', height: '7vh', fontSize: '15px' }}
         />
         <button
           onClick={changeStudent}
-          className="btn btn-primary"
+          className="btn btn-outline-secondary"
           type="button"
-          style={{ width: '20vw', height: '7vh', fontSize: '12px', color: '#29EDFF', backgroundColor: '#4520AB', border: '1px solid white' }}
+          style={{ width: '21vw', height: '7vh', fontSize: '12px', color: '#4520AB', border: '1px solid lightgrey', fontWeight: 'bold' }}
         >
-          Применить
+          Изменить
 
         </button>
       </div>

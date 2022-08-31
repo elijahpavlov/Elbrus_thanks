@@ -9,6 +9,7 @@ const authRouterApi = require('./routes/api/authRouteApi');
 const listRouter = require('./routes/api/listRouteApi');
 const editRouter = require('./routes/api/editRouteApi');
 const lkRouterApi = require('./routes/api/lkRouteApi');
+const deleteRouter = require('./routes/api/deleteRouteApi');
 
 const app = express();
 config(app);
@@ -20,6 +21,7 @@ app.use('/api', authRouterApi);
 app.use('/api/list', listRouter);
 app.use('/api/edit', editRouter);
 app.use('/lk', lkRouterApi);
+app.use('/api/delete', deleteRouter);
 
 app.listen(PORT, async () => {
   try {
