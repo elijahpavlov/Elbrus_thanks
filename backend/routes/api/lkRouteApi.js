@@ -9,7 +9,7 @@ lkRouterApi.put('/newPassword', async (req, res) => {
     if (password.length > 7) {
       const { login } = req.session.user;
       const newPassword = await bcrypt.hash(password, 10);
-      const userUpdated = await User.update({ password: newPassword }, { where: { login } });
+      await User.update({ password: newPassword }, { where: { login } });
       res.json({ update: true });
     } else {
       res.json({ update: 'Пароль должен быть более 8 символов' });
