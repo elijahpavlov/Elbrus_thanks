@@ -83,6 +83,8 @@ function PhaseShift({ user }) {
       {user === true && (
       <div className="App">
         <header className="App-header">
+          <div><a href="/list">Вернуться на главную</a></div>
+
           {(phase === 0)
             ? (
               <>
@@ -154,6 +156,7 @@ function PhaseShift({ user }) {
               >
                 {`Перейти к фазе ${phase - 1}`}
               </button>
+
             )
             : (
               <>
@@ -168,7 +171,9 @@ function PhaseShift({ user }) {
                       Перенести фазы
                     </button>
                   )
+
                   : <></>}
+
               </>
             )}
 
