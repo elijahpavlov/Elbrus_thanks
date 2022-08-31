@@ -5,6 +5,7 @@ import { React, useState, useEffect } from 'react';
 import Page404 from '../Error/Page404';
 import EditStudent from './EditStudent';
 
+
 function Edit({ user }) {
   const [students, setStudents] = useState([]);
   const [value, setValue] = useState('');
@@ -38,7 +39,6 @@ function Edit({ user }) {
 
   async function logout() {
     await fetch('/api/auth/logout');
-    // window.location.assign('/');
   }
 
   return (
