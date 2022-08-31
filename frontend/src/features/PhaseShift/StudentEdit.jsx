@@ -6,9 +6,16 @@ function StudentEdit({ student }) {
   const [status, setStatus] = useState('прошел');
 
   async function povtor() {
-    const response = await fetch(`/phaseshift/${student.id}`, { method: 'PUT' });
-    const result = await response.json();
-    setStatus(result.status);
+    console.log('status', status);
+    if (status === 'прошел'){
+      const response = await fetch(`/phaseshift/${student.id}`, { method: 'PUT' });
+      const result = await response.json();
+      setStatus(result.status);
+    } else {
+      const response = await fetch(`/phaseshift/cancel/${student.id}`, { method: 'PUT' });
+      const result = await response.json();
+      setStatus(result.status);
+    }
   }
 
   return (

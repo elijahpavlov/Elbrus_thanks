@@ -31,6 +31,18 @@ PhaseShiftRouter.put('/:id', async (req, res) => {
   }
 });
 
+// Отменяем изменение статуса студента
+PhaseShiftRouter.put('/cancel/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Student.update({ status: 'прошел' }, { where: { id } });
+    const student = await Student.findOne({ raw: true, where: { id } });
+    res.json(student);
+  } catch (error) {
+    res.json({ status: false });
+  }
+});
+
 // Удаляет 3 фазу, другие фазы переносит, повторщиков не трогает
 PhaseShiftRouter.put('/', async (req, res) => {
   try {

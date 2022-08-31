@@ -2,13 +2,18 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/prop-types */
 import { React, useState, useEffect } from 'react';
+import { useContext } from 'react';
+import UserContext from '../Context/Context';
 import Page404 from '../Error/Page404';
 import Student from './Student';
 
-function List({ user }) {
+function List() {
   const [students, setStudents] = useState([]);
   const [value, setValue] = useState('');
   const [phase, setPhase] = useState(0);
+  const [context, setContext] = useContext(UserContext);
+
+  console.log(context);
 
   useEffect(() => {
     fetch('/api/list')
@@ -42,7 +47,7 @@ function List({ user }) {
 
   return (
     <>
-      {user === null && (
+      {context === null && (
       <div style={{ display: 'flex', width: '100vw', height: '100vh', justifyContent: 'center', alignItems: 'center', columnGap: '1em' }}>
         <div className="spinner-grow text-primary" role="status" style={{ backgroundColor: '#4520AB' }}>
           <span className="visually-hidden">Loading...</span>
@@ -55,7 +60,7 @@ function List({ user }) {
         </div>
       </div>
       )}
-      {user === true && (
+      {context === true && (
       <div className="App">
         <header className="App-header">
           <div>
@@ -132,7 +137,7 @@ function List({ user }) {
         </header>
       </div>
       )}
-      {user === false && <Page404 />}
+      {context === false && <Page404 />}
     </>
   );
 }

@@ -1,15 +1,16 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/prop-types */
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, useContext } from 'react';
+import UserContext from '../Context/Context';
 import Page404 from '../Error/Page404';
 import EditStudent from './EditStudent';
 
-
-function Edit({ user }) {
+function Edit() {
   const [students, setStudents] = useState([]);
   const [value, setValue] = useState('');
   const [phase, setPhase] = useState(0);
+  const [context, setContext] = useContext(UserContext);
 
   useEffect(() => {
     fetch('/api/list')
@@ -43,7 +44,7 @@ function Edit({ user }) {
 
   return (
     <>
-      {user === null && (
+      {context === null && (
       <div style={{ display: 'flex', width: '100vw', height: '100vh', justifyContent: 'center', alignItems: 'center', columnGap: '1em' }}>
         <div className="spinner-grow text-primary" role="status" style={{ backgroundColor: '#4520AB' }}>
           <span className="visually-hidden">Loading...</span>
@@ -56,7 +57,7 @@ function Edit({ user }) {
         </div>
       </div>
       )}
-      {user === true && (
+      {context === true && (
       <div className="App">
         <header className="App-header">
           <div>
@@ -133,7 +134,7 @@ function Edit({ user }) {
         </header>
       </div>
       )}
-      {user === false && <Page404 />}
+      {context === false && <Page404 />}
     </>
   );
 }
