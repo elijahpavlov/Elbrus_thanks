@@ -21,6 +21,7 @@
     "nodemon": "^2.0.19"
   },
   "dependencies": {
+    "@react-navigation/native": "^6.0.12",
     "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",

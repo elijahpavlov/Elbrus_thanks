@@ -38,7 +38,6 @@ function List({ user }) {
 
   async function logout() {
     await fetch('/api/auth/logout');
-    // window.location.assign('/');
   }
 
   return (

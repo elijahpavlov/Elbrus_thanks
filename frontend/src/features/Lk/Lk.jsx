@@ -4,9 +4,11 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { React, useState } from 'react';
 import Page404 from '../Error/Page404';
+import { useNavigate } from 'react-router-dom';
 
-function Lk({ user }) {
+  function Lk({ user }) {
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   async function userEdit(event) {
     event.preventDefault();
@@ -24,7 +26,7 @@ function Lk({ user }) {
       });
       const result = await response.json();
       if (result.update === true) {
-        // window.location.assign('/list');
+        navigate('/list')
       } else {
         setMessage(result.update);
       }
@@ -59,8 +61,8 @@ function Lk({ user }) {
             <input type="password" name="repeatPassword" className="form-control form-control-lg" placeholder="Повторите пароль" style={{ marginTop: '10px', marginBottom: '10px' }} />
             <div className="helpText" style={{ color: 'red' }} />
             <button type="submit" className="btn btn-primary btn-lg" style={{ margin: '30px', backgroundColor: '#4520AB', color: '#29EDFF' }}>Изменить</button>
-            <div><a href="/list">Вернуться на главную</a></div>
           </form>
+            <button type="click" onClick={() => navigate('/list')} className="btn btn-primary btn-lg" style={{ margin: '30px', backgroundColor: '#4520AB', color: '#29EDFF' }}>Вернуться к списку студентов</button>
           <div style={{ color: '#4520AB' }}>{message}</div>
         </header>
       </div>
