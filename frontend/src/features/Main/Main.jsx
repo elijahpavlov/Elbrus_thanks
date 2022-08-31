@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 // import { useState, useEffect } from "react";
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
 import UserContext from '../Context/Context';
 
 function Main() {
@@ -36,7 +35,6 @@ function Main() {
 
     if (data.message === 'success') {
       await setContext(true);
-      console.log('Main context', context);
       navigate('/list');
     } else {
       document.querySelector('.helpText').innerText = data.message;

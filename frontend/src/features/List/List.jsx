@@ -1,8 +1,7 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/prop-types */
-import { React, useState, useEffect } from 'react';
-import { useContext } from 'react';
+import { React, useState, useEffect, useContext } from 'react';
 import UserContext from '../Context/Context';
 import Page404 from '../Error/Page404';
 import Student from './Student';
@@ -11,9 +10,7 @@ function List() {
   const [students, setStudents] = useState([]);
   const [value, setValue] = useState('');
   const [phase, setPhase] = useState(0);
-  const [context, setContext] = useContext(UserContext);
-
-  console.log(context);
+  const [context] = useContext(UserContext);
 
   useEffect(() => {
     fetch('/api/list')
