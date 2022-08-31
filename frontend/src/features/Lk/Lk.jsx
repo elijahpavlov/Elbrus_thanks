@@ -59,7 +59,7 @@ function Lk({ user }) {
             <input type="password" name="repeatPassword" className="form-control form-control-lg" placeholder="Повторите пароль" style={{ marginTop: '10px', marginBottom: '10px' }} />
             <div className="helpText" style={{ color: 'red' }} />
             <button type="submit" className="btn btn-primary btn-lg" style={{ margin: '30px', backgroundColor: '#4520AB', color: '#29EDFF' }}>Изменить</button>
-            <div><a href="/list">Вернуться назад</a></div>
+            <div><a href="/list">Вернуться на главную</a></div>
           </form>
           <div style={{ color: '#4520AB' }}>{message}</div>
         </header>

@@ -44,7 +44,7 @@ function EditStudent({ student }) {
           type="button"
           style={{ width: '20vw', height: '7vh', fontSize: '12px', color: '#29EDFF', backgroundColor: '#4520AB', border: '1px solid white' }}
         >
-          Изменить
+          Применить
 
         </button>
       </div>
