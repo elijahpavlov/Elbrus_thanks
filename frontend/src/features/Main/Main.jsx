@@ -3,11 +3,14 @@
 // import { useState, useEffect } from "react";
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import UserContext from '../Context/Context';
 
-function Main({ user }) {
+function Main() {
   const navigate = useNavigate();
+  const [context, setContext] = useContext(UserContext);
 
-  if (user === true) {
+  if (context === true) {
     navigate('/list');
   }
 
@@ -32,6 +35,8 @@ function Main({ user }) {
     // data.user.login
 
     if (data.message === 'success') {
+      await setContext(true);
+      console.log('Main context', context);
       navigate('/list');
     } else {
       document.querySelector('.helpText').innerText = data.message;
@@ -40,7 +45,7 @@ function Main({ user }) {
 
   return (
     <>
-      {user === null && (
+      {context === null && (
       <div style={{ display: 'flex', width: '100vw', height: '100vh', justifyContent: 'center', alignItems: 'center', columnGap: '1em' }}>
         <div className="spinner-grow text-primary" role="status" style={{ backgroundColor: '#4520AB' }}>
           <span className="visually-hidden">Loading...</span>
@@ -53,7 +58,7 @@ function Main({ user }) {
         </div>
       </div>
       )}
-      {user === false && (
+      {context === false && (
       <div>
         <div className="App">
           <header className="App-header">

@@ -3,12 +3,15 @@
 /* eslint-disable no-console */
 /* eslint-disable react/react-in-jsx-scope */
 import { React, useState } from 'react';
+import { useContext } from 'react';
+import UserContext from '../Context/Context';
 import Page404 from '../Error/Page404';
 import { useNavigate } from 'react-router-dom';
 
-  function Lk({ user }) {
+  function Lk() {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
+  const [context, setContext] = useContext(UserContext);
 
   async function userEdit(event) {
     event.preventDefault();
@@ -37,7 +40,7 @@ import { useNavigate } from 'react-router-dom';
 
   return (
     <div>
-      {user === null && (
+      {context === null && (
       <div style={{ display: 'flex', width: '100vw', height: '100vh', justifyContent: 'center', alignItems: 'center', columnGap: '1em' }}>
         <div className="spinner-grow text-primary" role="status" style={{ backgroundColor: '#4520AB' }}>
           <span className="visually-hidden">Loading...</span>
@@ -50,7 +53,7 @@ import { useNavigate } from 'react-router-dom';
         </div>
       </div>
       )}
-      {user === true && (
+      {context === true && (
       <div className="App">
         <header className="App-header">
           <form action="/lk" className="loginChangeForm" onSubmit={userEdit} style={{ width: '80vw', marginBottom: '15vh' }}>
@@ -67,7 +70,7 @@ import { useNavigate } from 'react-router-dom';
         </header>
       </div>
       )}
-      {user === false && <Page404 />}
+      {context === false && <Page404 />}
     </div>
   );
 }

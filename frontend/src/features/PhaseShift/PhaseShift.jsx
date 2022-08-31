@@ -6,13 +6,16 @@
 /* eslint-disable max-len */
 /* eslint-disable react/button-has-type */
 import { React, useState, useEffect } from 'react';
+import { useContext } from 'react';
+import UserContext from '../Context/Context';
 import Page404 from '../Error/Page404';
 import StudentEdit from './StudentEdit';
 
-function PhaseShift({ user }) {
+function PhaseShift() {
   const [students, setStudents] = useState([]);
   const [newStudents, setNewStudents] = useState([]);
   const [phase, setPhase] = useState(3);
+  const [context, setContext] = useContext(UserContext);
 
   // Отрисовывает студентов согласно фазе в состоянии
   useEffect(() => {
@@ -67,7 +70,7 @@ function PhaseShift({ user }) {
 
   return (
     <div>
-      {user === null && (
+      {context === null && (
       <div style={{ display: 'flex', width: '100vw', height: '100vh', justifyContent: 'center', alignItems: 'center', columnGap: '1em' }}>
         <div className="spinner-grow text-primary" role="status" style={{ backgroundColor: '#4520AB' }}>
           <span className="visually-hidden">Loading...</span>
@@ -80,7 +83,7 @@ function PhaseShift({ user }) {
         </div>
       </div>
       )}
-      {user === true && (
+      {context === true && (
       <div className="App">
         <header className="App-header">
           <div><a href="/list">Вернуться на главную</a></div>
@@ -180,7 +183,7 @@ function PhaseShift({ user }) {
         </header>
       </div>
       )}
-      {user === false && <Page404 />}
+      {context === false && <Page404 />}
     </div>
   );
 }

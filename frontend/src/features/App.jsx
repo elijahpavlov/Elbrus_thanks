@@ -9,31 +9,34 @@ import Main from './Main/Main';
 import Lk from './Lk/Lk';
 import Page404 from './Error/Page404';
 import Edit from './Edit/Edit';
+import UserContext from './Context/Context';
 
 function App() {
-  const [isAdmin, setIsAdmin] = useState(null);
+  const [context, setContext] = useState(null);
 
   useEffect(() => {
     fetch('api/')
       .then((result) => result.json())
       .then((data) => {
         const id = setTimeout(() => {
-          setIsAdmin(data.isAdmin);
+          setContext(data.isAdmin);
           clearTimeout(id);
         }, 800);
       });
   }, []);
 
   return (
-    <Routes>
-      <Route path="/" element={<Main user={isAdmin} />} />
-      <Route path="/list" element={<List user={isAdmin} />} />
-      <Route path="/phaseshift" element={<PhaseShift user={isAdmin} />} />
-      <Route path="/lk" element={<Lk user={isAdmin} />} />
-      <Route path="/edit" element={<Edit user={isAdmin} />} />
-      <Route path="/error" element={<Page404 user={isAdmin} />} />
-      <Route path="*" element={<Page404 user={isAdmin} />} />
-    </Routes>
+    <UserContext.Provider value={[context, setContext]}>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/list" element={<List />} />
+        <Route path="/phaseshift" element={<PhaseShift />} />
+        <Route path="/lk" element={<Lk />} />
+        <Route path="/edit" element={<Edit />} />
+        <Route path="/error" element={<Page404 />} />
+        <Route path="*" element={<Page404 />} />
+      </Routes>
+    </UserContext.Provider>
   );
 }
 
