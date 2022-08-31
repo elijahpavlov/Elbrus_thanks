@@ -7,6 +7,7 @@ const config = require('./config/config');
 const phaseShiftRouter = require('./routes/api/phaseShiftRouter');
 const authRouterApi = require('./routes/api/authRouteApi');
 const listRouter = require('./routes/api/listRouteApi');
+const editRouter = require('./routes/api/editRouteApi');
 const lkRouterApi = require('./routes/api/lkRouteApi');
 
 const app = express();
@@ -17,6 +18,7 @@ const PORT = process.env.PORT ?? 4000;
 app.use('/phaseshift', phaseShiftRouter);
 app.use('/api', authRouterApi);
 app.use('/api/list', listRouter);
+app.use('/api/edit', editRouter);
 app.use('/lk', lkRouterApi);
 
 app.listen(PORT, async () => {

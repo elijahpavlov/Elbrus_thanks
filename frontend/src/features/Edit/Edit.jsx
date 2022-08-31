@@ -3,9 +3,9 @@
 /* eslint-disable react/prop-types */
 import { React, useState, useEffect } from 'react';
 import Page404 from '../Error/Page404';
-import Student from './Student';
+import EditStudent from './EditStudent';
 
-function List({ user }) {
+function Edit({ user }) {
   const [students, setStudents] = useState([]);
   const [value, setValue] = useState('');
   const [phase, setPhase] = useState(0);
@@ -78,9 +78,9 @@ function List({ user }) {
                 style={{ width: '57px', backgroundColor: '#4520AB', color: '#29EDFF' }}
               />
               <ul className="dropdown-menu dropdown-menu-end" style={{ backgroundColor: '#f4f2f8', position: 'relative' }}>
-                <li><a className="dropdown-item" href="/edit">Редактирование</a></li>
+                <li><a className="dropdown-item" href="/list">Главная</a></li>
                 <li><a className="dropdown-item" href="/lk">Личный кабинет</a></li>
-                <li><a className="dropdown-item" href="/phaseshift">Перенос фазы</a></li>
+                <li><a className="dropdown-item" href="/phaseshift">Перенос фаз</a></li>
                 <li><hr className="dropdown-divider" /></li>
                 <li><a onClick={logout} className="dropdown-item" href="/">Выйти</a></li>
               </ul>
@@ -90,7 +90,7 @@ function List({ user }) {
               ? (<div>loading</div>) : (
                 <div style={{ overflow: 'scroll', height: '80vh', width: '100vw', position: 'relative' }}>
                   {filteredStudents.map((student) =>
-                    <Student key={student.id} student={student} />
+                    <EditStudent key={student.id} student={student} />
                   )}
                 </div>
               )}
@@ -138,4 +138,4 @@ function List({ user }) {
   );
 }
 
-export default List;
+export default Edit;

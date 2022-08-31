@@ -8,7 +8,7 @@ function Student({ student }) {
   const [thanks, setThanks] = useState(student.thanks);
 
   const plus = async () => {
-    const response = await fetch(`/list/${student.id}`, {
+    const response = await fetch(`/api/list/${student.id}`, {
       method: 'PUT',
       body: JSON.stringify({ thanks, status: 'plus' }),
       headers: {
@@ -20,7 +20,7 @@ function Student({ student }) {
   };
 
   const minus = async () => {
-    const response = await fetch(`/list/${student.id}`, {
+    const response = await fetch(`/api/list/${student.id}`, {
       method: 'PUT',
       body: JSON.stringify({ thanks, status: 'minus' }),
       headers: {
@@ -42,7 +42,7 @@ function Student({ student }) {
         onClick={minus}
         type="button"
         className="btn btn-outline-secondary"
-        style={{ flexBasis: '5%', height: '7vh', fontSize: '20px', color: 'black' }}
+        style={{ flexBasis: '5%', height: '7vh', fontSize: '15px', color: 'black' }}
       >
         ➖
       </button>
@@ -50,7 +50,7 @@ function Student({ student }) {
         onClick={plus}
         type="button"
         className="btn btn-outline-secondary"
-        style={{ hover: 'none', flexBasis: '65%', flexShrink: '0', height: '7vh', fontSize: '20px', color: 'black' }}
+        style={{ hover: 'none', flexBasis: '65%', flexShrink: '0', height: '7vh', fontSize: '15px', color: 'black' }}
       >
         {student.name}
       </button>
@@ -58,7 +58,7 @@ function Student({ student }) {
         onClick={plus}
         type="button"
         className="btn btn-outline-secondary"
-        style={{ flexBasis: '20%', flexShrink: '0', height: '7vh', fontSize: '20px', color: 'black' }}
+        style={{ flexBasis: '20%', flexShrink: '0', height: '7vh', fontSize: '15px', color: 'black' }}
       >
         {thanks}
       </button>
