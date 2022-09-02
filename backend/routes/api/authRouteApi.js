@@ -6,6 +6,7 @@ const { User } = require('../../db/models');
 // Роутер "ЛОГИ" по ресту
 
 authRouterApi.post('/auth/login', async (req, res) => {
+  console.log('!!!!!!!!!!!!!!!!!!', req.session);
   if (req.body.login.length > 4 && req.body.password.length > 7) {
     let user;
     try {
@@ -59,10 +60,10 @@ authRouterApi.get('/auth/logout', (req, res) => {
 
 authRouterApi.get('/', (req, res) => {
   if (req.session.user) {
-    console.log('req.session.user', req.session.user);
+    console.log('req.session', req.session);
     res.json({ isAdmin: true });
   } else {
-    console.log('req.session.user', false);
+    console.log('req.session', req.session);
     res.json({ isAdmin: false });
   }
 });
