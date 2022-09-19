@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 // import { useState, useEffect } from "react";
 import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import UserContext from '../Context/Context';
 
 function Main() {
@@ -30,8 +30,6 @@ function Main() {
       }),
     });
     const data = await response.json();
-
-    // data.user.login
 
     if (data.message === 'success') {
       await setContext(true);
@@ -73,6 +71,7 @@ function Main() {
               </div>
               <button type="submit" className="btn btn-primary btn-lg" style={{ marginTop: '30px', backgroundColor: '#4520AB', color: '#29EDFF' }}>Войти</button>
             </form>
+            <Link style={{ color: '#4520AB', fontSize: '2vh' }} to="/about">О разработчиках</Link>
           </header>
         </div>
       </div>

@@ -49,7 +49,7 @@ function List() {
 
   return (
     <>
-      {context === null && (
+      {(context === null && !students.length) && (
       <div style={{ display: 'flex', width: '100vw', height: '100vh', justifyContent: 'center', alignItems: 'center', columnGap: '1em' }}>
         <div className="spinner-grow text-primary" role="status" style={{ backgroundColor: '#4520AB' }}>
           <span className="visually-hidden">Loading...</span>
