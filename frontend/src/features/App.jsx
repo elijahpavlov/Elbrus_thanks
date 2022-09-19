@@ -10,6 +10,7 @@ import Main from './Main/Main';
 import Lk from './Lk/Lk';
 import Page404 from './Error/Page404';
 import Edit from './Edit/Edit';
+import About from './About/About';
 import UserContext from './Context/Context';
 import AddStudents from './AddStudents/AddStudents';
 
@@ -36,6 +37,7 @@ function App() {
         <Route path="/addstudents" element={<AddStudents />} />
         <Route path="/lk" element={<Lk />} />
         <Route path="/edit" element={<Edit />} />
+        <Route path="/about" element={<About />} />
         <Route path="/error" element={<Page404 />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
