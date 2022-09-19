@@ -5,7 +5,7 @@ const { User } = require('../../db/models');
 
 // Роутер "ЛОГИ" по ресту
 
-authRouterApi.post('/auth/login', async (req, res) => {
+authRouterApi.post('/login', async (req, res) => {
   if (req.body.login.length > 4 && req.body.password.length > 7) {
     let user;
     try {
@@ -45,15 +45,14 @@ authRouterApi.post('/auth/login', async (req, res) => {
 
 // Роутер "ЛОГАУТА" с удалением сессии
 
-authRouterApi.get('/auth/logout', (req, res) => {
+authRouterApi.delete('/logout', (req, res) => {
   req.session.destroy((error) => {
     if (error) {
       res.json({ error: 'Не удалось выйти' });
       return;
     }
-
     res.clearCookie('user_sid');
-    res.redirect('/');
+    res.json({ message: 'success' });
   });
 });
 

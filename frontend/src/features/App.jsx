@@ -11,12 +11,13 @@ import Lk from './Lk/Lk';
 import Page404 from './Error/Page404';
 import Edit from './Edit/Edit';
 import UserContext from './Context/Context';
+import AddStudents from './AddStudents/AddStudents';
 
 function App() {
   const [context, setContext] = useState(null);
 
   useEffect(() => {
-    fetch('api/')
+    fetch('api/auth')
       .then((result) => result.json())
       .then((data) => {
         const id = setTimeout(() => {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/list" element={<List />} />
         <Route path="/phaseshift" element={<PhaseShift />} />
+        <Route path="/addstudents" element={<AddStudents />} />
         <Route path="/lk" element={<Lk />} />
         <Route path="/edit" element={<Edit />} />
         <Route path="/error" element={<Page404 />} />

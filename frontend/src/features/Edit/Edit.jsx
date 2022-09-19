@@ -1,7 +1,9 @@
+/* eslint-disable max-len */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/prop-types */
 import { React, useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import UserContext from '../Context/Context';
 import Page404 from '../Error/Page404';
 import EditStudent from './EditStudent';
@@ -11,6 +13,7 @@ function Edit() {
   const [value, setValue] = useState('');
   const [phase, setPhase] = useState(0);
   const [context] = useContext(UserContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('/api/list')
@@ -40,6 +43,7 @@ function Edit() {
 
   async function logout() {
     await fetch('/api/auth/logout');
+    navigate('/');
   }
 
   return (
@@ -80,18 +84,19 @@ function Edit() {
               />
               <ul className="dropdown-menu dropdown-menu-end" style={{ backgroundColor: '#f4f2f8', position: 'relative' }}>
                 <li><a className="dropdown-item" href="/list">Главная</a></li>
-                <li><a className="dropdown-item" href="/lk">Личный кабинет</a></li>
+                <li><a className="dropdown-item" href="/addstudents">Добавить студента</a></li>
                 <li><a className="dropdown-item" href="/phaseshift">Перенос фаз</a></li>
+                <li><a className="dropdown-item" href="/lk">Личный кабинет</a></li>
                 <li><hr className="dropdown-divider" /></li>
                 <li><a onClick={logout} className="dropdown-item" href="/">Выйти</a></li>
               </ul>
             </div>
 
             {!students.length
-              ? (<div>loading</div>) : (
+              ? (<div style={{ color: '#29EDFF' }}>Список студентов пуст</div>) : (
                 <div style={{ overflow: 'scroll', height: '80vh', width: '100vw', position: 'relative' }}>
                   {filteredStudents.map((student) =>
-                    <EditStudent key={student.id} student={student} />
+                    <EditStudent key={student.id} student={student} setStudents={setStudents} students={students} />
                   )}
                 </div>
               )}

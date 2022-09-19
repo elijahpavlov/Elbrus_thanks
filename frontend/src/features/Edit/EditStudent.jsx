@@ -7,7 +7,7 @@
 
 import React, { useState } from 'react';
 
-function EditStudent({ student }) {
+function EditStudent({ student, setStudents }) {
   const [name, setName] = useState(student.name);
   const [phase, setphase] = useState(student.phase);
 
@@ -20,7 +20,7 @@ function EditStudent({ student }) {
     const result = await response.json();
   }
 
-  async function deleteStudent(event) {
+  async function deleteStudent() {
     const answer = confirm(`Удалить студента ${student.name}?`);
     if (answer) {
       const response = await fetch(`/api/delete/${student.id}`, {
@@ -28,7 +28,7 @@ function EditStudent({ student }) {
       });
       const result = await response.json();
       if (result.message === 'success') {
-        const del = document.getElementById(`${student.id}`).remove();
+        setStudents((prev) => [...prev].filter((el) => el.id !== student.id));
       }
     }
   }

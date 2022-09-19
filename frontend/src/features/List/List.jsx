@@ -39,7 +39,12 @@ function List() {
     .includes(value.toLowerCase()));
 
   async function logout() {
-    await fetch('/api/auth/logout');
+    await fetch('/api/auth/logout', {
+      method: 'DELETE',
+      headers: {
+        'Content-type': 'application/json'
+      }
+    });
   }
 
   return (
@@ -80,15 +85,16 @@ function List() {
               />
               <ul className="dropdown-menu dropdown-menu-end" style={{ backgroundColor: '#f4f2f8', position: 'relative' }}>
                 <li><a className="dropdown-item" href="/edit">Редактирование</a></li>
+                <li><a className="dropdown-item" href="/addstudents">Добавить студента</a></li>
+                <li><a className="dropdown-item" href="/phaseshift">Перенос фаз</a></li>
                 <li><a className="dropdown-item" href="/lk">Личный кабинет</a></li>
-                <li><a className="dropdown-item" href="/phaseshift">Перенос фазы</a></li>
                 <li><hr className="dropdown-divider" /></li>
                 <li><a onClick={logout} className="dropdown-item" href="/">Выйти</a></li>
               </ul>
             </div>
 
             {!students.length
-              ? (<div>loading</div>) : (
+              ? (<div style={{ color: '#29EDFF' }}>Список студентов пуст</div>) : (
                 <div style={{ overflow: 'scroll', height: '80vh', width: '100vw', position: 'relative' }}>
                   {filteredStudents.map((student) =>
                     <Student key={student.id} student={student} />
