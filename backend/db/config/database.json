@@ -1,5 +1,17 @@
 {
   "development": {
-    "use_env_variable": "DATABASE_URL"
+    "dialect": "sqlite",
+    "storage": "elbrus_thanks.sqlite",
+    "operatorsAliases": false
+  },
+  "test": {
+    "dialect": "sqlite",
+    "storage": "elbrus_thanks.sqlite",
+    "operatorsAliases": false
+  },
+  "production": {
+    "dialect": "sqlite",
+    "storage": "elbrus_thanks.sqlite",
+    "operatorsAliases": false
   }
 }

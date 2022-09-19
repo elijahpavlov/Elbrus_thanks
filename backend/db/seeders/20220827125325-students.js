@@ -14,9 +14,6 @@ module.exports = {
         name: 'Юлия Антонова', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date(),
       },
       {
-        name: 'Хочет на повтор 1', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date(),
-      },
-      {
         name: 'Рушания Хафизова', phase: 1, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date(),
       },
       {
@@ -37,9 +34,6 @@ module.exports = {
 
       {
         name: 'Антонина Адюкова', phase: 2, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date(),
-      },
-      {
-        name: 'Хочет на повтор 2', phase: 2, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date(),
       },
       {
         name: 'Алина Мейшале', phase: 2, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date(),
@@ -94,9 +88,6 @@ module.exports = {
       },
 
       {
-        name: 'Хочет на повтор 3', phase: 3, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date(),
-      },
-      {
         name: 'Владимир Леонов', phase: 3, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date(),
       },
       {
@@ -104,9 +95,6 @@ module.exports = {
       },
       {
         name: 'Денис Осотов', phase: 3, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date(),
-      },
-      {
-        name: 'Хочет на повтор 3', phase: 3, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date(),
       },
       {
         name: 'Вадим Жданов', phase: 3, thanks: 0, status: 'прошел', createdAt: new Date(), updatedAt: new Date(),

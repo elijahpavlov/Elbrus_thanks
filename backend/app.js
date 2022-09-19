@@ -1,7 +1,9 @@
 require('dotenv').config();
 
 const express = require('express');
-const { sequelize } = require('./db/models');
+// const { sequelize } = require('./db/models');
+const sequelize = require('./database');
+
 const config = require('./config/config');
 
 const phaseShiftRouter = require('./routes/api/phaseShiftRouter');
@@ -11,13 +13,15 @@ const editRouter = require('./routes/api/editRouteApi');
 const lkRouterApi = require('./routes/api/lkRouteApi');
 const deleteRouter = require('./routes/api/deleteRouteApi');
 
+sequelize.sync().then(() => console.log('db is ready'));
+
 const app = express();
 config(app);
 
 const PORT = process.env.PORT ?? 4000;
 
 app.use('/phaseshift', phaseShiftRouter);
-app.use('/api', authRouterApi);
+app.use('/api/auth', authRouterApi);
 app.use('/api/list', listRouter);
 app.use('/api/edit', editRouter);
 app.use('/lk', lkRouterApi);
