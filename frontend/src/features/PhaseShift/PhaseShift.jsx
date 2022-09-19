@@ -108,8 +108,7 @@ function PhaseShift() {
                     placeholder="Номер фазы"
                   />
                   <br />
-                  {/* <input type="text" name="thanks" placeholder='thanks of new student' />
-        <br/> */}
+
                   <button
                     className="btn btn-primary btn-lg"
                     style={{ backgroundColor: '#4520AB', color: '#29EDFF' }}

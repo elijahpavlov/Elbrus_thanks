@@ -84,6 +84,7 @@ function Edit() {
               />
               <ul className="dropdown-menu dropdown-menu-end" style={{ backgroundColor: '#f4f2f8', position: 'relative' }}>
                 <li><a className="dropdown-item" href="/list">Главная</a></li>
+                <li><a className="dropdown-item" href="/addstudents">Добавить студента</a></li>
                 <li><a className="dropdown-item" href="/phaseshift">Перенос фаз</a></li>
                 <li><a className="dropdown-item" href="/lk">Личный кабинет</a></li>
                 <li><hr className="dropdown-divider" /></li>
