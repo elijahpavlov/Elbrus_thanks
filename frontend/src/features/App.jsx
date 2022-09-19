@@ -16,7 +16,7 @@ function App() {
   const [context, setContext] = useState(null);
 
   useEffect(() => {
-    fetch('api/')
+    fetch('api/auth')
       .then((result) => result.json())
       .then((data) => {
         const id = setTimeout(() => {
