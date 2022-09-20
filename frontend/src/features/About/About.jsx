@@ -7,13 +7,12 @@ function About() {
     <div className="aboutPage">
       <img src="#" alt="about" />
       <p>Сергей Морозов, Илья Павлов, Тамара Гаспарян</p>
-      <p>С любовью, для Elbrus Bootcamp</p>
+      <p>С любовью, для Elbrus Bootcamp  ♥</p>
       <p>Сойки, СПб, август 2022</p>
       <button
         onClick={() => navigate('/')}
         type="button"
-        className="btn btn-primary  btn-lg"
-        style={{ backgroundColor: '#4520AB', color: '#29EDFF', margin: '10px' }}
+        className="btn btn-primary  btn-lg btn-elbrus"
       >
         Назад
       </button>

@@ -1,13 +1,14 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { React, useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AddStudentsList from './AddStudentsList';
 import UserContext from '../Context/Context';
+import LoadingPage from '../LoadingPage/LoadingPage';
 
 function AddStudents() {
   // const [students, setStudents] = useState([]);
   const [context] = useContext(UserContext);
   const [newStudents, setNewStudents] = useState([]);
-  const navigate = useNavigate();
 
   async function addStudent(event) {
     event.preventDefault();
@@ -34,30 +35,29 @@ function AddStudents() {
 
   return (
     <>
-      {context === null && (
-      <div style={{ display: 'flex', width: '100vw', height: '100vh', justifyContent: 'center', alignItems: 'center', columnGap: '1em' }}>
-        <div className="spinner-grow text-primary" role="status" style={{ backgroundColor: '#4520AB' }}>
-          <span className="visually-hidden">Loading...</span>
-        </div>
-        <div className="spinner-grow text-primary" role="status" style={{ backgroundColor: '#4520AB' }}>
-          <span className="visually-hidden">Loading...</span>
-        </div>
-        <div className="spinner-grow text-primary" role="status" style={{ backgroundColor: '#4520AB' }}>
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      </div>
-      )}
+      {context === null && (<LoadingPage />)}
+
       <div className="addStudents">
+
+        <Link to="/list" className="a-link">← Вернуться к списку студентов</Link>
+
         <form onSubmit={addStudent} method="POST">
-          <h1 style={{ color: '#4520AB', margin: '30px' }}>Добавьте новых студентов:</h1>
+          <h1 style={{ margin: '30px' }}>Добавьте новых студентов:</h1>
+
+          <label htmlFor="nameInput" />
+          Имя студента:
           <input
+            id="nameInput"
             type="text"
             name="name"
-            className="form-control form-control-lg"
+            className="form-control form-control-lg shift-input"
             placeholder="Имя студента"
-            style={{ marginBottom: '10px' }}
           />
+
+          <label htmlFor="phaseSelect" />
+          Номер фазы:
           <select
+            id="phaseSelect"
             type="text"
             name="phase"
             className="form-control form-control-lg"
@@ -67,29 +67,16 @@ function AddStudents() {
             <option value="2">2</option>
             <option value="3">3</option>
           </select>
-          <br />
 
           <button
             type="submit"
-            className="btn btn-primary btn-lg"
-            style={{ backgroundColor: '#4520AB', color: '#29EDFF' }}
+            className="btn btn-primary btn-lg btn-elbrus"
           >
             Добавить студентов
           </button>
         </form>
 
-        <button
-          onClick={() => navigate('/list')}
-          type="button"
-          className="btn btn-primary  btn-lg"
-          style={{ backgroundColor: '#4520AB', color: '#29EDFF', margin: '10px' }}
-        >
-          Перейти к списку студентов
-        </button>
-
-        <h4 style={{ color: '#4520AB', margin: '30px' }}>
-          Перечень новых студентов:
-        </h4>
+        <h4 className="h-margin30">Список добавленных студентов:</h4>
 
         <div>
           {newStudents.map((student) =>

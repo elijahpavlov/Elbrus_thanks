@@ -1,11 +1,8 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-undef */
-/* eslint-disable no-console */
-/* eslint-disable react/react-in-jsx-scope */
 import { React, useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import UserContext from '../Context/Context';
 import Page404 from '../Error/Page404';
+import LoadingPage from '../LoadingPage/LoadingPage';
 
 function Lk() {
   const [message, setMessage] = useState('');
@@ -39,33 +36,22 @@ function Lk() {
 
   return (
     <div>
-      {context === null && (
-      <div style={{ display: 'flex', width: '100vw', height: '100vh', justifyContent: 'center', alignItems: 'center', columnGap: '1em' }}>
-        <div className="spinner-grow text-primary" role="status" style={{ backgroundColor: '#4520AB' }}>
-          <span className="visually-hidden">Loading...</span>
-        </div>
-        <div className="spinner-grow text-primary" role="status" style={{ backgroundColor: '#4520AB' }}>
-          <span className="visually-hidden">Loading...</span>
-        </div>
-        <div className="spinner-grow text-primary" role="status" style={{ backgroundColor: '#4520AB' }}>
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      </div>
-      )}
+      {context === null && (<LoadingPage />)}
       {context === true && (
       <div className="App">
         <header className="App-header">
-          <form action="/lk" className="loginChangeForm" onSubmit={userEdit} style={{ width: '80vw', marginBottom: '15vh' }}>
-            <h1 style={{ color: '#4520AB', fontSize: '50px', margin: '5vh' }}>Личный кабинет</h1>
-            <h4 style={{ color: '#4520AB' }}>Редактирование пользователя:</h4>
+          <form action="/lk" className="loginChangeForm" onSubmit={userEdit}>
+            <h1 className="lk-h1">Личный кабинет</h1>
+            <h4>Редактирование пользователя:</h4>
             <input type="text" name="login" className="form-control form-control-lg" placeholder="Логин" />
-            <input type="password" name="password" className="form-control form-control-lg" placeholder="Пароль" style={{ marginTop: '10px', marginBottom: '10px' }} />
-            <input type="password" name="repeatPassword" className="form-control form-control-lg" placeholder="Повторите пароль" style={{ marginTop: '10px', marginBottom: '10px' }} />
-            <div className="helpText" style={{ color: 'red' }} />
-            <button type="submit" className="btn btn-primary btn-lg" style={{ margin: '30px', backgroundColor: '#4520AB', color: '#29EDFF' }}>Изменить</button>
+            <input type="password" name="password" className="form-control form-control-lg lk-input" placeholder="Пароль" />
+            <input type="password" name="repeatPassword" className="form-control form-control-lg lk-input" placeholder="Повторите пароль" />
+            <div className="helpText" />
+            <button type="submit" className="btn btn-primary btn-lg btn-elbrus">Изменить</button>
+            <div className="helpText">{message}</div>
           </form>
-          <button type="button" onClick={() => navigate('/list')} className="btn btn-primary btn-lg" style={{ margin: '30px', backgroundColor: '#4520AB', color: '#29EDFF' }}>Вернуться к списку студентов</button>
-          <div style={{ color: '#4520AB' }}>{message}</div>
+
+          <Link className="link-style" to="/list">← Вернуться к списку студентов</Link>
         </header>
       </div>
       )}

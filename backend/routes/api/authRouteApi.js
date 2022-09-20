@@ -51,9 +51,11 @@ authRouterApi.delete('/logout', (req, res) => {
       res.json({ error: 'Не удалось выйти' });
       return;
     }
-    res.clearCookie('user_sid');
-    res.json({ message: 'success' });
+    // res.clearCookie('user_sid');
+    // res.json({ message: 'success' });
   });
+  res.clearCookie('user_sid');
+  res.json({ message: 'success' });
 });
 
 authRouterApi.get('/', (req, res) => {
