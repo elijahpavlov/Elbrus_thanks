@@ -65,7 +65,10 @@
 .aboutPage {
   text-align: center;
   margin-top: 10vh;
+  color: #4520AB
 }
 
-
+.aboutPhoto{
+  margin-bottom: 10vh;
+}
 
