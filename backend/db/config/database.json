@@ -1,0 +1,17 @@
+{
+  "development": {
+    "dialect": "sqlite",
+    "storage": "elbrus_thanks.sqlite",
+    "operatorsAliases": false
+  },
+  "test": {
+    "dialect": "sqlite",
+    "storage": "elbrus_thanks.sqlite",
+    "operatorsAliases": false
+  },
+  "production": {
+    "dialect": "sqlite",
+    "storage": "elbrus_thanks.sqlite",
+    "operatorsAliases": false
+  }
+}
