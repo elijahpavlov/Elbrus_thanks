@@ -7,7 +7,6 @@
 }
 
 .App-header {
-  /* background-color: #efedf5; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -53,7 +52,7 @@
 }
 
 
-h1, h2, h3, h4, p, label, label {
+h1, h2, h3, h4, h5, h6, p, label, label {
   color: #4520AB;
 }
 

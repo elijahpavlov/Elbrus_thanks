@@ -96,24 +96,19 @@ function PhaseShift() {
                     Добавить студентов
                   </button>
                 </form>
-                <form type="submit" action="/list">
-                  <button className="btn btn-primary  btn-lg btn-elbrus">
-                    Перейти к списку студентов
-                  </button>
-                </form>
 
-                <h4 className="h-margin30">
+                <h6 className="h-margin30">
                   Список новых студентов первой фазы:
-                </h4>
+                </h6>
 
                 <div>
                   {newStudents.map((student) =>
                     <StudentEdit student={student} key={student.id} />
                   )}
                 </div>
-                <h4 className="h-margin30">
+                <h6 className="h-margin30">
                   Список повторщиков первой фазы:
-                </h4>
+                </h6>
               </>
             )
             : (

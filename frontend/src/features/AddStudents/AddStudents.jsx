@@ -76,7 +76,7 @@ function AddStudents() {
           </button>
         </form>
 
-        <h4 className="h-margin30">Список добавленных студентов:</h4>
+        <h5 className="h-margin30">Список добавленных студентов:</h5>
 
         <div>
           {newStudents.map((student) =>
