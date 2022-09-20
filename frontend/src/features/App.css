@@ -126,6 +126,16 @@ h1, h2, h3, h4, p, label, label {
   color: red;
 }
 
+.aboutPage {
+  text-align: center;
+  margin-top: 10vh;
+  color: #4520AB
+}
+
+.aboutPhoto{
+  margin-bottom: 10vh;
+}
+
 .loginChangeForm, .loginForm {
   width: 80vw;
   margin-bottom: 5vh;
