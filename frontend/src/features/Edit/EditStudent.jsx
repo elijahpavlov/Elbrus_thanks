@@ -1,10 +1,6 @@
-/* eslint-disable no-alert */
 /* eslint-disable no-restricted-globals */
-/* eslint-disable react/button-has-type */
-/* eslint-disable max-len */
-/* eslint-disable no-unused-vars */
+/* eslint-disable no-alert */
 /* eslint-disable react/prop-types */
-
 import React, { useState } from 'react';
 
 function EditStudent({ student, setStudents }) {
@@ -17,7 +13,7 @@ function EditStudent({ student, setStudents }) {
       body: JSON.stringify({ name, phase, status: 'changeStudent' }),
       headers: { 'Content-Type': 'application/json' },
     });
-    const result = await response.json();
+    await response.json();
   }
 
   async function deleteStudent() {
@@ -38,13 +34,12 @@ function EditStudent({ student, setStudents }) {
       <div className="input-group">
         <button
           onClick={deleteStudent}
-          className="btn btn-outline-secondary"
+          className="btn btn-outline-secondary edit-del-btn"
           type="button"
-          style={{ width: '11vw', height: '7vh', fontSize: '12px', color: '#4520AB', border: '1px solid lightgrey', fontWeight: 'bold' }}
         >
           X
-
         </button>
+
         <input
           name="name"
           className="form-control form-control-lg"
@@ -53,6 +48,7 @@ function EditStudent({ student, setStudents }) {
           onChange={(event) => setName(event.target.value)}
           style={{ width: '50vw', height: '7vh', fontSize: '15px' }}
         />
+
         <input
           name="phase"
           className="form-control form-control-lg"
@@ -61,6 +57,7 @@ function EditStudent({ student, setStudents }) {
           onChange={(event) => setphase(event.target.value)}
           style={{ width: '14vw', height: '7vh', fontSize: '15px' }}
         />
+
         <button
           onClick={changeStudent}
           className="btn btn-outline-secondary"
