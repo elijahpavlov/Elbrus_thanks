@@ -2,8 +2,8 @@ require('dotenv').config();
 
 const express = require('express');
 // const { sequelize } = require('./db/models');
+const path = require('path');
 const sequelize = require('./database');
-
 const config = require('./config/config');
 
 const phaseShiftRouter = require('./routes/api/phaseShiftRouter');
@@ -26,6 +26,10 @@ app.use('/api/list', listRouter);
 app.use('/api/edit', editRouter);
 app.use('/lk', lkRouterApi);
 app.use('/api/delete', deleteRouter);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve('./public/index.html'));
+});
 
 app.listen(PORT, async () => {
   try {

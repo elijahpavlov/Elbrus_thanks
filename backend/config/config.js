@@ -7,6 +7,7 @@ const cors = require('cors');
 const sessionConfig = require('./sessionConfig');
 
 module.exports = function config(app) {
+  app.use(express.static('public'));
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use(morgan('dev'));
