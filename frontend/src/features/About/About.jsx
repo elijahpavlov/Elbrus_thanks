@@ -18,8 +18,7 @@ function About() {
       <button
         onClick={() => navigate('/')}
         type="button"
-        className="btn btn-primary  btn-lg"
-        style={{ backgroundColor: '#4520AB', color: '#29EDFF', margin: '10px' }}
+        className="btn btn-primary  btn-lg btn-elbrus"
       >
         Назад
       </button>

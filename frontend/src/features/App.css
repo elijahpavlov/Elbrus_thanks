@@ -1,10 +1,13 @@
+* {
+  background-color: #efedf5;
+}
+
 .App {
   text-align: center;
 }
 
-
 .App-header {
-  background-color: #efedf5;
+  /* background-color: #efedf5; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -27,39 +30,100 @@
   }
 }
 
-/* .phasesDiv {
-  position: fixed;
-  bottom: 10px;
-  display: flex;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#phase1, #phase2, #phase3 {
-  width: 140px;
-  height: 130px; 
-  font-size: 50px;
-}
-
-.studentInfoButton {
-  border: 1px solid black;
-  margin: 5px; 
-  width: 450px;
-  height: 50px;
-}
-
-.minusButton {
-  border: 1px solid black;
-  width: 50px;
-  height: 50px;
-  background-color: rgb(194, 45, 45);
-  font-size: 30px;
-} */
-
-
 .addStudents {
   text-align: center;
+  margin: 20px;
+}
+
+.aboutPage {
+  text-align: center;
+  margin-top: 10vh;
+}
+
+.btn-elbrus {
+  background-color: #4520AB;
+  color: #29EDFF; 
+  margin: 2vh;
+  /* margin: 10px; */
+}
+
+.btn-elbrus:hover {
+  background-color: #4520AB;
+  color: #29EDFF; 
+}
+
+
+h1, h2, h3, h4, p, label, label {
+  color: #4520AB;
+}
+
+.loading {
+  background-color: #4520AB;
+}
+
+.btn-phase {
+  color: #29EDFF; 
+  font-size: 40px; 
+  background-color: #4520AB; 
+  border: 2px solid white;
+}
+
+.btn-phase:hover {
+  color: #29EDFF; 
+  font-size: 40px; 
+  background-color: #4520AB; 
+  border: 2px solid white;
+}
+
+.phasesDiv {
+  width: 100vw; 
+  height: 13vh; 
+  position: fixed; 
+  left: 0; 
+  bottom: 0; 
+  z-index: 5;
+}
+
+.ul-menu {
+  background-color: #f4f2f8; 
+  position: relative; 
+}
+
+.loading-div {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  column-gap: 1em;
+}
+
+.nav-input-div {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 7vh;
+  z-index: 5;
+}
+
+.nav-input {
+  background-color: #f4f2f8;
+}
+
+.nav-button {
+  width: 57px;
+  background-color: #4520AB;
+  color: #29EDFF;
+}
+
+.nav-button:hover {
+  background-color: #4520AB;
+  color: #29EDFF;
+}
+
+.helpText {
+  color: red;
 }
 
 .aboutPage {
@@ -72,3 +136,38 @@
   margin-bottom: 10vh;
 }
 
+.loginChangeForm, .loginForm {
+  width: 80vw;
+  margin-bottom: 5vh;
+}
+
+.lk-input, .login-input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.lk-h1 {
+  font-size: 50px; 
+  margin: 5vh;
+}
+
+.link-style {
+  color: #4520AB;
+  font-size: 2.5vh;
+}
+
+.edit-students-div, .list-students-div {
+  overflow: scroll;
+  height: 80vh; 
+  width: 100vw; 
+  position: relative;
+}
+
+.h-margin30 {
+  margin-bottom: 30px;
+}
+
+.a-link {
+  color: #4520AB;
+  margin: 20px;
+}

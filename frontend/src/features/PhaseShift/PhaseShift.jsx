@@ -1,22 +1,18 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-console */
-/* eslint-disable no-shadow */
 /* eslint-disable react/jsx-no-useless-fragment */
-/* eslint-disable no-undef */
-/* eslint-disable max-len */
 /* eslint-disable react/button-has-type */
+/* eslint-disable no-shadow */
 import { React, useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import UserContext from '../Context/Context';
 import Page404 from '../Error/Page404';
 import StudentEdit from './StudentEdit';
+import LoadingPage from '../LoadingPage/LoadingPage';
 
 function PhaseShift() {
   const [students, setStudents] = useState([]);
   const [newStudents, setNewStudents] = useState([]);
   const [phase, setPhase] = useState(3);
   const [context] = useContext(UserContext);
-  const navigate = useNavigate();
 
   // Отрисовывает студентов согласно фазе в состоянии
   useEffect(() => {
@@ -71,35 +67,22 @@ function PhaseShift() {
 
   return (
     <div>
-      {context === null && (
-      <div style={{ display: 'flex', width: '100vw', height: '100vh', justifyContent: 'center', alignItems: 'center', columnGap: '1em' }}>
-        <div className="spinner-grow text-primary" role="status" style={{ backgroundColor: '#4520AB' }}>
-          <span className="visually-hidden">Loading...</span>
-        </div>
-        <div className="spinner-grow text-primary" role="status" style={{ backgroundColor: '#4520AB' }}>
-          <span className="visually-hidden">Loading...</span>
-        </div>
-        <div className="spinner-grow text-primary" role="status" style={{ backgroundColor: '#4520AB' }}>
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      </div>
-      )}
+      {context === null && (<LoadingPage />)}
       {context === true && (
       <div className="App">
         <header className="App-header">
-          <button type="button" onClick={() => navigate('/list')} className="btn btn-primary btn-lg" style={{ margin: '30px', backgroundColor: '#4520AB', color: '#29EDFF' }}>Вернуться к списку студентов</button>
+          <Link to="/list" className="a-link">← Вернуться к списку студентов</Link>
 
           {(phase === 0)
             ? (
               <>
                 <form onSubmit={addStudents} method="POST">
-                  <h1 style={{ color: '#4520AB', margin: '30px' }}>Добавьте новых студентов:</h1>
+                  <h1 className="h-margin30">Добавьте новых студентов:</h1>
                   <input
                     type="text"
                     name="name"
-                    className="form-control form-control-lg"
+                    className="form-control form-control-lg shift-input"
                     placeholder="Имя студента"
-                    style={{ marginBottom: '10px' }}
                   />
                   <input
                     type="text"
@@ -109,24 +92,18 @@ function PhaseShift() {
                   />
                   <br />
 
-                  <button
-                    className="btn btn-primary btn-lg"
-                    style={{ backgroundColor: '#4520AB', color: '#29EDFF' }}
-                  >
+                  <button className="btn btn-primary btn-lg btn-elbrus">
                     Добавить студентов
                   </button>
                 </form>
                 <form type="submit" action="/list">
-                  <button
-                    className="btn btn-primary  btn-lg"
-                    style={{ backgroundColor: '#4520AB', color: '#29EDFF', margin: '10px' }}
-                  >
+                  <button className="btn btn-primary  btn-lg btn-elbrus">
                     Перейти к списку студентов
                   </button>
                 </form>
 
-                <h4 style={{ color: '#4520AB', margin: '30px' }}>
-                  Перечень новых студентов первой фазы:
+                <h4 className="h-margin30">
+                  Список новых студентов первой фазы:
                 </h4>
 
                 <div>
@@ -134,15 +111,15 @@ function PhaseShift() {
                     <StudentEdit student={student} key={student.id} />
                   )}
                 </div>
-                <h4 style={{ color: '#4520AB', margin: '30px' }}>
-                  Перечень повторщиков первой фазы:
+                <h4 className="h-margin30">
+                  Список повторщиков первой фазы:
                 </h4>
               </>
             )
             : (
-              <h1 style={{ color: '#4520AB', margin: '30px' }}>
+              <h2 className="h-margin30">
                 {`Выберете повторщиков c фазы ${phase}`}
-              </h1>
+              </h2>
             )}
           <div>
             {students.map((student) =>
@@ -154,8 +131,7 @@ function PhaseShift() {
             ? (
               <button
                 onClick={nextPhase}
-                className="btn btn-primary btn-lg"
-                style={{ backgroundColor: '#4520AB', color: '#29EDFF', margin: '5vh' }}
+                className="btn btn-primary btn-lg btn-elbrus"
               >
                 {`Перейти к фазе ${phase - 1}`}
               </button>
@@ -167,14 +143,12 @@ function PhaseShift() {
                   ? (
                     <button
                       onClick={nextPhase}
-                      className="btn btn-primary btn-lg"
-                      style={{ backgroundColor: '#4520AB', color: '#29EDFF', margin: '5vh' }}
+                      className="btn btn-primary btn-lg btn-elbrus"
                     >
                       {' '}
                       Перенести фазы
                     </button>
                   )
-
                   : <></>}
 
               </>

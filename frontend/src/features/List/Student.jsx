@@ -1,7 +1,4 @@
-/* eslint-disable max-len */
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-/* eslint-disable react/button-has-type */
 import React, { useState } from 'react';
 
 function Student({ student }) {
@@ -41,15 +38,14 @@ function Student({ student }) {
       <button
         onClick={minus}
         type="button"
-        className="btn btn-outline-secondary"
-        style={{ flexBasis: '5%', height: '7vh', fontSize: '15px', color: 'black' }}
+        className="btn btn-outline-secondary minus-btn"
       >
         ➖
       </button>
       <button
         onClick={plus}
         type="button"
-        className="btn btn-outline-secondary"
+        className="btn btn-outline-secondary name-"
         style={{ hover: 'none', flexBasis: '65%', flexShrink: '0', height: '7vh', fontSize: '15px', color: 'black' }}
       >
         {student.name}

@@ -1,10 +1,9 @@
-/* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable react/prop-types */
 import { React, useState, useEffect, useContext } from 'react';
 import UserContext from '../Context/Context';
 import Page404 from '../Error/Page404';
 import Student from './Student';
+import LoadingPage from '../LoadingPage/LoadingPage';
 
 function List() {
   const [students, setStudents] = useState([]);
@@ -38,52 +37,42 @@ function List() {
     .toLowerCase()
     .includes(value.toLowerCase()));
 
-  async function logout() {
+  async function logout(event) {
+    event.preventDefault();
     await fetch('/api/auth/logout', {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json'
       }
     });
+    window.location.href = '/';
   }
 
   return (
     <>
       {(context === null && !students.length) && (
-      <div style={{ display: 'flex', width: '100vw', height: '100vh', justifyContent: 'center', alignItems: 'center', columnGap: '1em' }}>
-        <div className="spinner-grow text-primary" role="status" style={{ backgroundColor: '#4520AB' }}>
-          <span className="visually-hidden">Loading...</span>
-        </div>
-        <div className="spinner-grow text-primary" role="status" style={{ backgroundColor: '#4520AB' }}>
-          <span className="visually-hidden">Loading...</span>
-        </div>
-        <div className="spinner-grow text-primary" role="status" style={{ backgroundColor: '#4520AB' }}>
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      </div>
+      <LoadingPage />
       )}
       {context === true && (
       <div className="App">
         <header className="App-header">
           <div>
 
-            <div className="input-group mb-3" style={{ position: 'fixed', left: '0', top: '0', width: '100vw', height: '7vh', zIndex: '5' }}>
+            <div className="input-group mb-3 nav-input-div">
               <input
                 type="text"
-                className="form-control"
+                className="form-control nav-input"
                 aria-label="Text input with dropdown button"
                 placeholder="Поиск..."
                 onChange={(event) => setValue(event.target.value)}
-                style={{ backgroundColor: '#f4f2f8' }}
               />
               <button
-                className="btn btn-outline-secondary dropdown-toggle"
+                className="btn btn-outline-secondary dropdown-toggle nav-button"
                 type="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
-                style={{ width: '57px', backgroundColor: '#4520AB', color: '#29EDFF' }}
               />
-              <ul className="dropdown-menu dropdown-menu-end" style={{ backgroundColor: '#f4f2f8', position: 'relative' }}>
+              <ul className="dropdown-menu dropdown-menu-end ul-menu">
                 <li><a className="dropdown-item" href="/edit">Редактирование</a></li>
                 <li><a className="dropdown-item" href="/addstudents">Добавить студента</a></li>
                 <li><a className="dropdown-item" href="/phaseshift">Перенос фаз</a></li>
@@ -94,42 +83,36 @@ function List() {
             </div>
 
             {!students.length
-              ? (<div style={{ color: '#29EDFF' }}>Список студентов пуст</div>) : (
-                <div style={{ overflow: 'scroll', height: '80vh', width: '100vw', position: 'relative' }}>
+              ? (<h4>Список студентов пуст</h4>) : (
+                <div className="list-students-div">
                   {filteredStudents.map((student) =>
                     <Student key={student.id} student={student} />
                   )}
                 </div>
               )}
 
-            <div className="phasesDiv">
-              <div
-                className="btn-group me-2"
-                style={{ width: '100vw', height: '13vh', position: 'fixed', left: '0', bottom: '0', zIndex: '5' }}
-              >
+            <div>
+              <div className="btn-group me-2 phasesDiv">
                 <button
                   onClick={phase1}
-                  style={{ color: '#29EDFF', fontSize: '40px', backgroundColor: '#4520AB', border: '2px solid white' }}
                   type="button"
-                  className="btn btn-secondary btn-lg"
+                  className="btn btn-secondary btn-lg btn-phase"
                 >
                   1
                 </button>
 
                 <button
                   onClick={phase2}
-                  style={{ color: '#29EDFF', fontSize: '40px', backgroundColor: '#4520AB', border: '2px solid white' }}
                   type="button"
-                  className="btn btn-secondary btn-lg"
+                  className="btn btn-secondary btn-lg btn-phase"
                 >
                   2
                 </button>
 
                 <button
                   onClick={phase3}
-                  style={{ color: '#29EDFF', fontSize: '40px', backgroundColor: '#4520AB', border: '2px solid white' }}
                   type="button"
-                  className="btn btn-secondary btn-lg"
+                  className="btn btn-secondary btn-lg btn-phase"
                 >
                   3
                 </button>
